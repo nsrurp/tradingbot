@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<title>MCH · Firma · Master Template</title>
+<style>
+  body{background:#1A1A1A;color:#F5F5F5;font-family:sans-serif;padding:48px;line-height:1.6}
+  h1{font-family:'Arial Black',sans-serif;font-size:24px;letter-spacing:-0.02em;text-transform:uppercase;margin-bottom:8px}
+  .lbl{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#7A7A75;margin-bottom:24px}
+  .lbl b{color:#C9A961}
+  .frame{background:#FFFFFF;padding:32px;border:1px solid #2A2A2A;max-width:640px;margin-bottom:32px}
+  .vars{
+    background:#0B0B0B;border:1px solid #C9A961;padding:24px;color:#C8C5BD;
+    font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;
+    max-width:640px;margin-bottom:32px;
+  }
+  .vars b{color:#C9A961;font-weight:500}
+  .vars .ph{background:#1A1A1A;padding:2px 6px;color:#F5F5F5;border-radius:2px}
+  ol{margin-left:24px;color:#C8C5BD}
+  ol li{margin-bottom:8px;font-size:13px}
+  code{background:#0B0B0B;padding:2px 6px;border-radius:2px;color:#C9A961;font-family:'JetBrains Mono',monospace;font-size:11px}
+</style>
+</head>
+<body>
+
+<h1>Firma · Master Template</h1>
+<div class="lbl">PLANTILLA · <b>v1.0</b> · Buscar y reemplazar <b>5 placeholders</b> por persona</div>
+
+<!-- INSTRUCCIONES -->
+<div class="vars">
+<b>↳ VARIABLES A REEMPLAZAR</b><br><br>
+<span class="ph">{{NOMBRE_COMPLETO}}</span> → Ej: <b>Alberto Srur Piselli</b><br>
+<span class="ph">{{ROL}}</span> → Ej: <b>Director · Comercial</b><br>
+<span class="ph">{{TELEFONO}}</span> → Ej: <b>+54 387 XXX XXXX</b><br>
+<span class="ph">{{EMAIL}}</span> → Ej: <b>alberto@mchsoluciones.com.ar</b><br>
+<span class="ph">{{INICIAL_ALIAS}}</span> → Ej: <b>alberto</b> (parte antes del @)
+<br><br>
+<b>↳ USO:</b><br>
+1. Copiar este archivo y renombrarlo a <code>firma_{nombre}.html</code><br>
+2. Buscar/reemplazar las 5 variables en el archivo<br>
+3. Abrir el HTML en el browser y copiar la firma renderizada (cuadro blanco)<br>
+4. Pegar en Gmail / Apple Mail / Outlook según las instrucciones de <code>firma_nico.html</code>
+</div>
+
+<!-- PREVIEW + CÓDIGO DE FIRMA -->
+<div class="frame">
+
+<!-- ============================================================
+     INICIO · FIRMA
+     ============================================================ -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#0A0A0A;">
+  <tr>
+    <td style="padding-right:16px;border-right:1px solid #C9A961;vertical-align:top;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+        <tr><td style="background:#000000;width:64px;height:64px;padding:0;line-height:0;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="64" height="64">
+            <rect width="88" height="88" fill="#C9A961"/>
+            <path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000000"/>
+          </svg>
+        </td></tr>
+        <tr><td style="font-family:'Arial Black','Helvetica',sans-serif;font-weight:900;font-size:18px;letter-spacing:-0.5px;color:#000000;padding-top:8px;line-height:1;">MCH</td></tr>
+        <tr><td style="font-family:Consolas,'Courier New',monospace;font-size:8px;letter-spacing:2px;color:#5C5C5C;padding-top:3px;">SOLUCIONES</td></tr>
+      </table>
+    </td>
+
+    <td style="padding-left:18px;vertical-align:top;">
+      <div style="font-family:'Arial Black','Helvetica',sans-serif;font-weight:900;font-size:16px;line-height:1.1;letter-spacing:-0.3px;color:#000000;text-transform:uppercase;">
+        {{NOMBRE_COMPLETO}}
+      </div>
+      <div style="font-family:Consolas,'Courier New',monospace;font-size:10px;letter-spacing:2.2px;color:#A8893E;text-transform:uppercase;margin-top:4px;">
+        {{ROL}}
+      </div>
+
+      <div style="border-top:1px solid #C9A961;width:40px;margin:10px 0 10px 0;line-height:0;font-size:0;">&nbsp;</div>
+
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#0A0A0A;line-height:1.55;">
+        <tr>
+          <td style="font-family:Consolas,'Courier New',monospace;font-size:9px;letter-spacing:1.8px;color:#5C5C5C;text-transform:uppercase;padding-right:10px;width:42px;">TEL</td>
+          <td style="font-family:Consolas,'Courier New',monospace;font-size:12px;letter-spacing:0.5px;color:#0A0A0A;">{{TELEFONO}}</td>
+        </tr>
+        <tr>
+          <td style="font-family:Consolas,'Courier New',monospace;font-size:9px;letter-spacing:1.8px;color:#5C5C5C;text-transform:uppercase;padding-right:10px;">MAIL</td>
+          <td style="font-family:Consolas,'Courier New',monospace;font-size:12px;letter-spacing:0.5px;"><a href="mailto:{{EMAIL}}" style="color:#0A0A0A;text-decoration:none;">{{EMAIL}}</a></td>
+        </tr>
+        <tr>
+          <td style="font-family:Consolas,'Courier New',monospace;font-size:9px;letter-spacing:1.8px;color:#5C5C5C;text-transform:uppercase;padding-right:10px;">WEB</td>
+          <td style="font-family:Consolas,'Courier New',monospace;font-size:12px;letter-spacing:0.5px;"><a href="https://mchsoluciones.com.ar" style="color:#A8893E;text-decoration:none;">mchsoluciones.com.ar</a></td>
+        </tr>
+        <tr>
+          <td style="font-family:Consolas,'Courier New',monospace;font-size:9px;letter-spacing:1.8px;color:#5C5C5C;text-transform:uppercase;padding-right:10px;">OFICINA</td>
+          <td style="font-family:Consolas,'Courier New',monospace;font-size:12px;letter-spacing:0.5px;color:#5C5C5C;">Salta · Argentina</td>
+        </tr>
+      </table>
+
+      <div style="margin-top:14px;padding-top:10px;border-top:1px solid #E0DDD3;font-family:Consolas,'Courier New',monospace;font-size:8.5px;letter-spacing:1.8px;color:#7A7A75;text-transform:uppercase;line-height:1.6;">
+        MCH Soluciones · Tecnología industrial · NOA<br>
+        <span style="color:#A8893E;">Unidad · Grupo Marc Chagall SAS · 1985</span>
+      </div>
+    </td>
+  </tr>
+</table>
+<!-- ============================================================
+     FIN · FIRMA
+     ============================================================ -->
+
+</div>
+
+<div class="vars">
+<b>↳ 4 FIRMAS LISTAS PARA GENERAR · ROADMAP</b><br><br>
+firma_alberto.html · <b>ALBERTO</b> [APELLIDO] · DIRECTOR · [ROL]<br>
+firma_diego.html  · <b>DIEGO</b>  [APELLIDO] · [ROL]<br>
+firma_hernan.html · <b>HERNÁN</b> [APELLIDO] · [ROL]<br>
+firma_julio.html  · <b>JULIO</b>  [APELLIDO] · [ROL]<br><br>
+Pasame los datos de cada uno (nombre completo, rol exacto, teléfono, email) y te las genero pre-llenadas en 30 segundos.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2494 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MCH Soluciones · Sistema de Identidad v1.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   MCH SOLUCIONES — BRAND SYSTEM v1.0
+   Architecture: dark base · gold accent (≤10%) · english green
+   ============================================================ */
+:root{
+  --black:#000000;
+  --gold:#C9A961;
+  --gold-deep:#A8893E;
+  --green:#14342B;
+  --green-deep:#0A1F1A;
+  --cream:#F5F5F5;
+  --bone:#EAE6DC;
+  --line:#1F1F1F;
+  --line-hi:#2A2A2A;
+  --text-mute:#7A7A75;
+  --danger:#C8341F;
+  --grid: 8px;
+  --max:1440px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  color:var(--cream);
+  font-family:'Archivo', sans-serif;
+  font-weight:400;
+  font-size:14px;
+  line-height:1.5;
+  letter-spacing:0.01em;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.mono{font-family:'JetBrains Mono', monospace;font-weight:400;letter-spacing:0.02em}
+.display{font-family:'Archivo Black', sans-serif;letter-spacing:-0.02em;text-transform:uppercase}
+.upper{text-transform:uppercase;letter-spacing:0.18em}
+.gold{color:var(--gold)}
+.cream{color:var(--cream)}
+.green{color:var(--green)}
+.mute{color:var(--text-mute)}
+
+/* ---------- GLOBAL FRAME ---------- */
+.frame{
+  position:fixed;inset:0;
+  pointer-events:none;
+  border:1px solid var(--line);
+  margin:16px;
+  z-index:100;
+}
+.frame::before,.frame::after{
+  content:"";
+  position:absolute;
+  background:var(--gold);
+}
+.frame::before{top:-1px;left:-1px;width:24px;height:1px}
+.frame::after{top:-1px;left:-1px;width:1px;height:24px}
+
+.corner{position:fixed;z-index:101;pointer-events:none;
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--text-mute);letter-spacing:0.1em;text-transform:uppercase}
+.corner.tl{top:24px;left:32px}
+.corner.tr{top:24px;right:32px;text-align:right}
+.corner.bl{bottom:24px;left:32px}
+.corner.br{bottom:24px;right:32px;text-align:right}
+.corner b{color:var(--gold);font-weight:500}
+
+/* ---------- LAYOUT ---------- */
+section{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:120px 48px 80px;
+  position:relative;
+  border-bottom:1px solid var(--line);
+}
+.section-tag{
+  display:flex;align-items:center;gap:12px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--text-mute);
+  letter-spacing:0.22em;text-transform:uppercase;
+  margin-bottom:24px;
+}
+.section-tag .num{
+  color:var(--gold);font-weight:500;
+}
+.section-tag .bar{
+  flex:1;height:1px;background:var(--line-hi);
+}
+.section-title{
+  font-family:'Archivo Black',sans-serif;
+  font-size:clamp(36px,5vw,72px);
+  line-height:0.95;
+  letter-spacing:-0.03em;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+.section-sub{
+  max-width:680px;
+  font-size:15px;line-height:1.6;
+  color:var(--text-mute);
+  margin-bottom:64px;
+  border-left:2px solid var(--gold);
+  padding-left:16px;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:100vh;
+  max-width:none;
+  padding:80px 48px 48px;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  gap:48px;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse at 70% 40%, black 30%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at 70% 40%, black 30%, transparent 75%);
+  pointer-events:none;
+}
+.hero-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  position:relative;z-index:2;
+}
+.hero-meta{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--text-mute);
+  letter-spacing:0.18em;text-transform:uppercase;
+}
+.hero-meta b{color:var(--gold);font-weight:500}
+.hero-meta div{margin-bottom:4px}
+.hero-center{
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:2;
+}
+.hero-wordmark{
+  font-family:'Archivo Black',sans-serif;
+  font-size:clamp(80px,18vw,260px);
+  line-height:0.85;
+  letter-spacing:-0.05em;
+  text-transform:uppercase;
+  color:var(--cream);
+}
+.hero-wordmark .acc{color:var(--gold)}
+.hero-descriptor{
+  display:flex;align-items:center;gap:24px;
+  margin-top:32px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--cream);
+}
+.hero-descriptor .dot{width:8px;height:8px;background:var(--gold);display:inline-block}
+.hero-bottom{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+  position:relative;z-index:2;
+  padding-top:32px;
+  border-top:1px solid var(--line);
+}
+.hero-stat{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--text-mute);
+}
+.hero-stat b{
+  display:block;color:var(--cream);
+  font-family:'Archivo Black',sans-serif;
+  font-size:28px;line-height:1;letter-spacing:-0.02em;
+  margin-bottom:8px;
+  text-transform:none;
+}
+
+/* ---------- TOC ---------- */
+.toc{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.toc a{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 24px;
+  color:var(--cream);
+  text-decoration:none;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  font-family:'Archivo',sans-serif;font-weight:500;font-size:13px;
+  text-transform:uppercase;letter-spacing:0.12em;
+  transition:background .2s, color .2s;
+}
+.toc a:nth-child(2n){border-right:none}
+.toc a:hover{background:var(--gold);color:var(--black)}
+.toc a .num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--gold);
+  letter-spacing:0.2em;
+}
+.toc a:hover .num{color:var(--black)}
+
+/* =========================================================
+   01 · MANIFIESTO
+   ========================================================= */
+.positioning{
+  font-family:'Archivo Black',sans-serif;
+  font-size:clamp(28px,3.5vw,52px);
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+  max-width:1100px;
+  margin-bottom:48px;
+}
+.positioning .acc{color:var(--gold)}
+.manifesto-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:24px;
+  margin-bottom:64px;
+}
+.block{
+  background:#0B0B0B;
+  border:1px solid var(--line);
+  padding:24px;
+  position:relative;
+}
+.block-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--gold);
+  letter-spacing:0.22em;text-transform:uppercase;
+  margin-bottom:16px;
+  display:flex;justify-content:space-between;
+}
+.block-tag .id{color:var(--text-mute)}
+.block h3{
+  font-family:'Archivo Black',sans-serif;
+  font-size:22px;line-height:1;
+  letter-spacing:-0.02em;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.block p{font-size:14px;line-height:1.6;color:#C8C5BD}
+.col-6{grid-column:span 6}
+.col-4{grid-column:span 4}
+.col-3{grid-column:span 3}
+.col-8{grid-column:span 8}
+.col-12{grid-column:span 12}
+
+.values-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+  margin-bottom:48px;
+}
+.value{
+  padding:32px 24px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:#080808;
+  position:relative;
+}
+.value .vn{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--gold);
+  letter-spacing:0.22em;
+  position:absolute;top:16px;right:16px;
+}
+.value h4{
+  font-family:'Archivo Black',sans-serif;
+  font-size:24px;line-height:1;letter-spacing:-0.02em;
+  text-transform:uppercase;margin-bottom:12px;
+  color:var(--cream);
+}
+.value .op{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--text-mute);
+  letter-spacing:0.18em;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.value p{font-size:13px;line-height:1.55;color:#B9B6AE}
+
+.taglines{
+  background:#0B0B0B;
+  border:1px solid var(--line);
+  padding:48px;
+  margin-bottom:48px;
+}
+.tagline-main{
+  font-family:'Archivo Black',sans-serif;
+  font-size:clamp(36px,5vw,72px);
+  line-height:0.95;letter-spacing:-0.03em;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+.tagline-main .acc{color:var(--gold)}
+.tagline-alts{
+  display:flex;gap:32px;flex-wrap:wrap;
+  padding-top:24px;border-top:1px solid var(--line);
+}
+.tagline-alts div{
+  flex:1;min-width:240px;
+  font-family:'Archivo',sans-serif;font-weight:600;
+  font-size:18px;line-height:1.3;color:#C8C5BD;
+}
+.tagline-alts div b{
+  display:block;
+  font-family:'JetBrains Mono',monospace;font-weight:400;
+  font-size:10px;color:var(--gold);
+  letter-spacing:0.22em;text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.voice{
+  display:grid;grid-template-columns:1fr 2fr;gap:0;
+  border:1px solid var(--line);
+}
+.voice-adjectives{
+  background:var(--green);
+  padding:32px;
+  border-right:1px solid var(--line);
+}
+.voice-adjectives .ttl{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--gold);
+  letter-spacing:0.22em;text-transform:uppercase;
+  margin-bottom:24px;
+}
+.voice-adjectives .adj{
+  font-family:'Archivo Black',sans-serif;
+  font-size:36px;line-height:1.1;
+  letter-spacing:-0.02em;text-transform:uppercase;
+  color:var(--cream);
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.voice-adjectives .adj:last-child{border-bottom:none}
+.voice-examples{
+  padding:0;
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.voice-cell{
+  padding:24px;
+  border-right:1px solid var(--line);
+  background:#080808;
+}
+.voice-cell:last-child{border-right:none;background:#0B0606}
+.voice-cell .tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.22em;text-transform:uppercase;
+  margin-bottom:16px;display:flex;align-items:center;gap:8px;
+}
+.voice-cell.si .tag{color:var(--gold)}
+.voice-cell.no .tag{color:var(--danger)}
+.voice-cell .tag::before{
+  content:"";width:8px;height:8px;display:inline-block;
+}
+.voice-cell.si .tag::before{background:var(--gold)}
+.voice-cell.no .tag::before{background:var(--danger)}
+.voice-cell .ex{
+  font-size:14px;line-height:1.55;
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+}
+.voice-cell .ex:last-child{border-bottom:none}
+.voice-cell.si .ex{color:var(--cream)}
+.voice-cell.no .ex{color:#6E6B65;text-decoration:line-through;text-decoration-color:var(--danger)}
+
+/* =========================================================
+   02 · LOGO
+   ========================================================= */
+.logo-showcase{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  border:1px solid var(--line);
+  margin-bottom:48px;
+}
+.logo-cell{
+  aspect-ratio:1/1;
+  display:flex;align-items:center;justify-content:center;
+  border-right:1px solid var(--line);
+  position:relative;
+  padding:32px;
+}
+.logo-cell:last-child{border-right:none}
+.logo-cell .meta{
+  position:absolute;top:12px;left:12px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);
+}
+.logo-cell .meta b{color:rgba(255,255,255,0.7);font-weight:500}
+.logo-cell.black{background:var(--black)}
+.logo-cell.cream{background:var(--cream)}
+.logo-cell.cream .meta{color:rgba(0,0,0,0.4)}
+.logo-cell.cream .meta b{color:rgba(0,0,0,0.8)}
+.logo-cell.gold{background:var(--gold)}
+.logo-cell.gold .meta{color:rgba(0,0,0,0.5)}
+.logo-cell.gold .meta b{color:rgba(0,0,0,0.8)}
+.logo-cell.green{background:var(--green)}
+
+/* The actual logo SVG renders */
+.logo-full{display:block;width:80%;max-width:280px;height:auto}
+.logo-mark{display:block;width:60%;max-width:180px;height:auto}
+
+.logo-hierarchy{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  margin-bottom:48px;
+}
+.hier{
+  background:#0B0B0B;
+  border:1px solid var(--line);
+  padding:32px 24px 24px;
+  display:flex;flex-direction:column;
+}
+.hier .htag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--gold);
+  letter-spacing:0.22em;text-transform:uppercase;
+  margin-bottom:24px;
+  display:flex;justify-content:space-between;
+}
+.hier .htag .n{color:var(--text-mute)}
+.hier .hbox{
+  flex:1;
+  display:flex;align-items:center;justify-content:center;
+  min-height:140px;
+  background:var(--black);
+  border:1px solid var(--line);
+  padding:24px;
+  margin-bottom:16px;
+}
+.hier .hcap{
+  font-size:12px;color:#B9B6AE;line-height:1.5;
+}
+.hier .hcap b{display:block;color:var(--cream);
+  font-family:'Archivo',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.08em;
+  font-size:12px;margin-bottom:4px;
+}
+
+.construction{
+  background:#0B0B0B;
+  border:1px solid var(--line);
+  padding:48px;
+  margin-bottom:48px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:48px;
+  align-items:center;
+}
+.construction-svg{
+  background:var(--black);
+  border:1px solid var(--line-hi);
+  padding:24px;
+}
+.construction-info h3{
+  font-family:'Archivo Black',sans-serif;
+  font-size:32px;line-height:1;letter-spacing:-0.02em;
+  text-transform:uppercase;margin-bottom:24px;
+}
+.construction-info p{font-size:14px;line-height:1.6;color:#B9B6AE;margin-bottom:16px}
+.construction-info ul{
+  list-style:none;border-top:1px solid var(--line);
+  margin-top:16px;
+}
+.construction-info ul li{
+  display:flex;justify-content:space-between;
+  padding:10px 0;border-bottom:1px solid var(--line);
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:0.1em;text-transform:uppercase;
+}
+.construction-info ul li span{color:var(--text-mute)}
+.construction-info ul li b{color:var(--gold);font-weight:500}
+
+.scale-test{
+  background:#080808;
+  border:1px solid var(--line);
+  padding:32px;
+  display:flex;align-items:flex-end;justify-content:space-around;
+  gap:32px;flex-wrap:wrap;
+}
+.scale-item{
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+}
+.scale-item .sbox{
+  display:flex;align-items:center;justify-content:center;
+  background:var(--black);
+  border:1px solid var(--line-hi);
+}
+.scale-item .scap{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--text-mute);text-align:center;
+}
+.scale-item .scap b{display:block;color:var(--gold);font-weight:500}
+
+/* =========================================================
+   03 · COLOR
+   ========================================================= */
+.color-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;border:1px solid var(--line);
+  margin-bottom:48px;
+}
+.color-card{
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  display:grid;
+  grid-template-rows:200px 1fr;
+}
+.color-card:nth-child(3n){border-right:none}
+.color-card:nth-last-child(-n+3){border-bottom:none}
+.color-swatch{
+  position:relative;
+  display:flex;align-items:flex-end;
+  padding:16px;
+}
+.color-swatch .role{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
+  font-weight:500;
+}
+.color-swatch.dk .role{color:var(--gold)}
+.color-swatch.lt .role{color:var(--black)}
+.color-info{
+  padding:20px;background:#0B0B0B;
+}
+.color-info h4{
+  font-family:'Archivo Black',sans-serif;
+  font-size:20px;line-height:1;letter-spacing:-0.02em;
+  text-transform:uppercase;margin-bottom:12px;
+}
+.color-info .codes{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;line-height:1.6;color:var(--text-mute);
+  letter-spacing:0.05em;
+}
+.color-info .codes b{color:var(--cream);font-weight:500}
+.color-info .codes div{display:flex;justify-content:space-between}
+.color-info .why{
+  font-size:12px;line-height:1.5;color:#B9B6AE;
+  margin-top:12px;padding-top:12px;
+  border-top:1px solid var(--line);
+}
+
+.proportions{
+  background:#0B0B0B;border:1px solid var(--line);
+  padding:32px;margin-bottom:48px;
+}
+.proportions h3{
+  font-family:'Archivo Black',sans-serif;font-size:24px;
+  text-transform:uppercase;letter-spacing:-0.02em;
+  margin-bottom:24px;
+}
+.prop-bar{
+  display:flex;height:48px;width:100%;
+  border:1px solid var(--line-hi);
+}
+.prop-bar > div{
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:0.15em;text-transform:uppercase;
+}
+.prop-legend{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px;
+}
+.prop-legend div{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mute);
+  display:flex;align-items:center;gap:8px;
+}
+.prop-legend .sw{width:12px;height:12px;display:inline-block}
+.prop-legend b{color:var(--cream);font-weight:500}
+
+.combos{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:48px;
+}
+.combo-block{
+  border:1px solid var(--line);
+  padding:0;
+}
+.combo-block .ctag{
+  padding:12px 20px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;
+  border-bottom:1px solid var(--line);
+}
+.combo-block.ok .ctag{color:var(--gold);background:#0B0B0B}
+.combo-block.no .ctag{color:var(--danger);background:#0B0606}
+.combo-block .ctag::before{
+  content:"";width:8px;height:8px;display:inline-block;
+}
+.combo-block.ok .ctag::before{background:var(--gold)}
+.combo-block.no .ctag::before{background:var(--danger)}
+.combo-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+}
+.combo-cell{
+  aspect-ratio:1.5/1;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Archivo Black',sans-serif;
+  font-size:18px;text-transform:uppercase;letter-spacing:-0.02em;
+  border-right:1px solid rgba(255,255,255,0.06);
+  position:relative;
+}
+.combo-cell:last-child{border-right:none}
+.combo-cell.cross::after{
+  content:"";position:absolute;inset:8px;
+  border:1px solid var(--danger);
+  background:linear-gradient(45deg,transparent calc(50% - 1px),var(--danger) 50%,transparent calc(50% + 1px));
+  opacity:0.3;
+}
+
+.contrast{
+  background:#0B0B0B;border:1px solid var(--line);
+  padding:32px;
+}
+.contrast h3{
+  font-family:'Archivo Black',sans-serif;font-size:24px;
+  text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:24px;
+}
+.contrast-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+}
+.contrast-card{
+  padding:24px;border:1px solid var(--line-hi);
+  display:flex;flex-direction:column;gap:8px;
+}
+.contrast-card .sample{
+  font-family:'Archivo Black',sans-serif;font-size:32px;
+  text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:12px;
+}
+.contrast-card .ratio{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  letter-spacing:0.15em;text-transform:uppercase;
+}
+.contrast-card .ratio b{color:var(--gold);font-weight:500}
+.contrast-card .wcag{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.2em;text-transform:uppercase;
+}
+.contrast-card .wcag .pass{color:#7DCE94}
+.contrast-card .wcag .fail{color:var(--danger)}
+
+/* =========================================================
+   04 · TIPOGRAFÍA
+   ========================================================= */
+.type-families{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;
+}
+.type-fam{
+  background:#0B0B0B;border:1px solid var(--line);
+  padding:32px;
+}
+.type-fam .ftag{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--gold);letter-spacing:0.22em;text-transform:uppercase;
+  margin-bottom:16px;display:flex;justify-content:space-between;
+}
+.type-fam .fname{
+  font-size:48px;line-height:1;letter-spacing:-0.03em;
+  text-transform:uppercase;margin-bottom:16px;
+}
+.type-fam.primary .fname{font-family:'Archivo Black',sans-serif}
+.type-fam.secondary .fname{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:32px}
+.type-fam .fdesc{font-size:14px;line-height:1.6;color:#B9B6AE;margin-bottom:24px}
+.type-fam .fglyphs{
+  font-size:24px;line-height:1.4;letter-spacing:0.05em;
+  padding:16px;border:1px solid var(--line-hi);
+  background:var(--black);
+  word-break:break-all;
+}
+.type-fam.primary .fglyphs{font-family:'Archivo',sans-serif;font-weight:900}
+.type-fam.secondary .fglyphs{font-family:'JetBrains Mono',monospace}
+
+.type-scale{
+  background:#0B0B0B;border:1px solid var(--line);
+  margin-bottom:48px;
+}
+.scale-row{
+  display:grid;
+  grid-template-columns:120px 100px 100px 1fr;
+  gap:24px;padding:24px;
+  border-bottom:1px solid var(--line);
+  align-items:baseline;
+}
+.scale-row:last-child{border-bottom:none}
+.scale-row .label{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
+}
+.scale-row .size{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.15em;text-transform:uppercase;color:var(--text-mute);
+}
+.scale-row .weight{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.15em;text-transform:uppercase;color:var(--text-mute);
+}
+.scale-row .demo{
+  color:var(--cream);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.scale-row.hero .demo{font-family:'Archivo Black',sans-serif;font-size:64px;line-height:0.9;letter-spacing:-0.03em;text-transform:uppercase}
+.scale-row.h1 .demo{font-family:'Archivo Black',sans-serif;font-size:42px;line-height:1;letter-spacing:-0.025em;text-transform:uppercase}
+.scale-row.h2 .demo{font-family:'Archivo Black',sans-serif;font-size:28px;line-height:1.05;letter-spacing:-0.02em;text-transform:uppercase}
+.scale-row.h3 .demo{font-family:'Archivo',sans-serif;font-size:18px;font-weight:700;line-height:1.2;text-transform:uppercase;letter-spacing:0.08em}
+.scale-row.body .demo{font-family:'Archivo',sans-serif;font-size:14px;font-weight:400;line-height:1.5}
+.scale-row.caption .demo{font-family:'Archivo',sans-serif;font-size:12px;font-weight:500;line-height:1.4;color:var(--text-mute)}
+.scale-row.mono .demo{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold)}
+
+.type-specimen{
+  background:var(--cream);
+  color:var(--black);
+  padding:64px 48px;
+  position:relative;
+  overflow:hidden;
+}
+.type-specimen .label{
+  position:absolute;top:24px;right:24px;
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.22em;text-transform:uppercase;color:rgba(0,0,0,0.5);
+}
+.type-specimen .specimen-hero{
+  font-family:'Archivo Black',sans-serif;
+  font-size:clamp(48px,9vw,140px);
+  line-height:0.85;letter-spacing:-0.04em;text-transform:uppercase;
+  margin-bottom:32px;
+}
+.type-specimen .specimen-hero .acc{color:var(--gold-deep)}
+.type-specimen .specimen-meta{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:24px;padding-top:24px;border-top:1px solid rgba(0,0,0,0.15);
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.18em;text-transform:uppercase;color:rgba(0,0,0,0.6);
+}
+.type-specimen .specimen-meta b{display:block;color:var(--black);font-weight:500;font-size:14px;margin-bottom:4px}
+
+.type-rules{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+  margin-top:48px;
+}
+.type-rules .rule{
+  background:#0B0B0B;border:1px solid var(--line);padding:24px;
+}
+.type-rules .rule h4{
+  font-family:'Archivo Black',sans-serif;font-size:18px;
+  text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:12px;
+}
+.type-rules .rule p{font-size:13px;line-height:1.6;color:#B9B6AE}
+
+/* =========================================================
+   05 · APLICACIONES
+   ========================================================= */
+.apps-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:24px;
+}
+.app{
+  background:#0B0B0B;border:1px solid var(--line);
+  padding:24px;
+  display:flex;flex-direction:column;
+}
+.app .atag{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:16px;
+  display:flex;justify-content:space-between;
+}
+.app .atag .id{color:var(--text-mute)}
+.app h4{
+  font-family:'Archivo Black',sans-serif;font-size:18px;line-height:1;
+  text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:20px;
+}
+.app .mockup{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  background:var(--black);border:1px solid var(--line-hi);
+  padding:24px;min-height:280px;position:relative;
+}
+.app .acap{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.15em;text-transform:uppercase;color:var(--text-mute);
+  margin-top:12px;
+}
+
+/* Business card */
+.bcard{
+  width:340px;aspect-ratio:85/55;
+  background:var(--black);
+  border:1px solid var(--line-hi);
+  padding:18px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;
+  font-family:'Archivo',sans-serif;
+  box-shadow:0 12px 32px rgba(0,0,0,0.6);
+}
+.bcard::before{
+  content:"";position:absolute;top:0;left:18px;width:32px;height:3px;background:var(--gold);
+}
+.bcard .bc-top{display:flex;justify-content:space-between;align-items:flex-start}
+.bcard .bc-name{
+  font-family:'Archivo Black',sans-serif;font-size:14px;
+  text-transform:uppercase;letter-spacing:-0.01em;line-height:1;
+  margin-bottom:4px;color:var(--cream);
+}
+.bcard .bc-role{
+  font-family:'JetBrains Mono',monospace;font-size:8px;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
+}
+.bcard .bc-info{
+  font-family:'JetBrains Mono',monospace;font-size:8px;line-height:1.7;
+  color:#B9B6AE;letter-spacing:0.08em;
+}
+.bcard .bc-info .lbl{color:var(--text-mute)}
+
+/* Quotation header */
+.quote{
+  width:100%;max-width:360px;aspect-ratio:1/1.414;
+  background:var(--cream);color:var(--black);
+  padding:20px;display:flex;flex-direction:column;gap:12px;
+  font-family:'Archivo',sans-serif;
+}
+.quote-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:12px;border-bottom:2px solid var(--black);
+}
+.quote-title-row{
+  display:flex;justify-content:space-between;align-items:flex-end;
+}
+.quote h2{
+  font-family:'Archivo Black',sans-serif;font-size:24px;line-height:1;
+  letter-spacing:-0.02em;text-transform:uppercase;
+}
+.quote .qno{
+  font-family:'JetBrains Mono',monospace;font-size:8px;
+  letter-spacing:0.2em;text-transform:uppercase;
+  background:var(--black);color:var(--cream);padding:4px 8px;
+}
+.quote .qmeta{
+  font-family:'JetBrains Mono',monospace;font-size:7px;
+  letter-spacing:0.15em;text-transform:uppercase;line-height:1.7;
+}
+.quote .qmeta .row{display:flex;justify-content:space-between}
+.quote .qmeta .lbl{color:rgba(0,0,0,0.5)}
+.quote table{width:100%;font-size:8px;border-collapse:collapse;margin-top:6px}
+.quote th{
+  font-family:'JetBrains Mono',monospace;font-size:7px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  text-align:left;padding:6px 4px;border-bottom:1px solid var(--black);
+}
+.quote td{padding:5px 4px;border-bottom:1px solid rgba(0,0,0,0.1);font-family:'JetBrains Mono',monospace;font-size:8px}
+.quote .qfoot{
+  margin-top:auto;padding-top:8px;border-top:2px solid var(--black);
+  display:flex;justify-content:space-between;align-items:flex-end;
+}
+.quote .total{font-family:'Archivo Black',sans-serif;font-size:16px;letter-spacing:-0.02em}
+
+/* Stencil */
+.stencil{
+  width:100%;display:flex;flex-direction:column;gap:24px;align-items:center;
+}
+.stencil-helmet{
+  background:#1A1A1A;
+  border-radius:50% 50% 8% 8%;
+  padding:32px 28px 24px;
+  width:200px;height:160px;
+  display:flex;align-items:flex-end;justify-content:center;
+  position:relative;
+}
+.stencil-helmet::before{
+  content:"";position:absolute;left:8px;right:8px;top:36%;height:1px;background:rgba(255,255,255,0.05);
+}
+.stencil-vinyl{
+  background:#0F0F0F;
+  border:1px dashed var(--line-hi);
+  padding:16px 24px;
+  display:flex;align-items:center;gap:12px;
+  width:100%;max-width:280px;
+}
+.stencil-vinyl .v-mark{flex-shrink:0}
+.stencil-vinyl .v-text{
+  font-family:'Archivo Black',sans-serif;
+  font-size:11px;text-transform:uppercase;letter-spacing:0.05em;
+  line-height:1;color:var(--cream);
+}
+.stencil-vinyl .v-text small{
+  display:block;font-family:'JetBrains Mono',monospace;
+  font-size:7px;font-weight:400;color:var(--gold);
+  letter-spacing:0.2em;margin-top:2px;
+}
+
+/* Avatar */
+.avatar{
+  width:200px;height:200px;
+  background:var(--black);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  box-shadow:0 12px 32px rgba(0,0,0,0.6);
+}
+.avatar::before{
+  content:"";position:absolute;top:8px;left:8px;width:24px;height:2px;background:var(--gold);
+}
+.avatar::after{
+  content:"REF·AV·001";position:absolute;bottom:8px;right:8px;
+  font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:0.2em;color:rgba(255,255,255,0.4);
+}
+
+/* Email header */
+.email{
+  width:100%;max-width:360px;
+  background:var(--cream);color:var(--black);
+  font-family:'Archivo',sans-serif;
+}
+.email-head{
+  background:var(--black);color:var(--cream);
+  padding:14px 18px;
+  display:flex;justify-content:space-between;align-items:center;
+  position:relative;
+}
+.email-head::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);
+}
+.email-subject{
+  padding:14px 18px;border-bottom:1px solid rgba(0,0,0,0.1);
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,0,0,0.6);
+  display:flex;justify-content:space-between;
+}
+.email-subject b{color:var(--black);font-weight:500}
+.email-body{
+  padding:18px;font-size:10px;line-height:1.6;color:rgba(0,0,0,0.8);
+}
+.email-body p{margin-bottom:8px}
+.email-sig{
+  padding:14px 18px;border-top:1px solid rgba(0,0,0,0.1);
+  display:flex;justify-content:space-between;align-items:flex-end;
+}
+.email-sig .who{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;line-height:1.6}
+.email-sig .who b{font-family:'Archivo Black',sans-serif;font-size:10px;letter-spacing:-0.01em;color:var(--black)}
+
+/* Sticker */
+.sticker{
+  width:180px;height:180px;
+  background:var(--gold);
+  display:flex;flex-direction:column;
+  padding:20px;position:relative;
+  border-radius:6px;
+  box-shadow:0 12px 32px rgba(201,169,97,0.2);
+}
+.sticker .s-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:auto;
+}
+.sticker .s-ref{
+  font-family:'JetBrains Mono',monospace;font-size:8px;
+  letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.7);
+}
+.sticker .s-mark{flex-shrink:0}
+.sticker .s-bot{
+  font-family:'JetBrains Mono',monospace;font-size:8px;
+  letter-spacing:0.18em;text-transform:uppercase;color:rgba(0,0,0,0.7);
+  line-height:1.6;
+}
+.sticker .s-bot b{
+  display:block;font-family:'Archivo Black',sans-serif;font-size:14px;
+  letter-spacing:-0.01em;color:var(--black);text-transform:uppercase;margin-bottom:4px;
+}
+
+/* =========================================================
+   06 · ARQUITECTURA DE MARCA
+   ========================================================= */
+.arch-diagram{
+  background:#0B0B0B;border:1px solid var(--line);
+  padding:48px;margin-bottom:48px;position:relative;
+}
+.arch-svg{width:100%;height:auto;max-width:1100px;margin:0 auto;display:block}
+
+.cobranding{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;
+}
+.cobrand-block{
+  background:#0B0B0B;border:1px solid var(--line);
+  padding:32px;
+}
+.cobrand-block h3{
+  font-family:'Archivo Black',sans-serif;font-size:22px;
+  text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:20px;
+}
+.cobrand-block p{font-size:13px;line-height:1.6;color:#B9B6AE;margin-bottom:24px}
+.cobrand-demo{
+  background:var(--black);border:1px solid var(--line-hi);
+  padding:24px;display:flex;align-items:center;justify-content:center;
+  min-height:120px;gap:32px;
+}
+.cobrand-sep{
+  width:1px;height:32px;background:var(--gold);opacity:0.6;
+}
+
+.partners-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+  border:1px solid var(--line);
+}
+.partner-cell{
+  aspect-ratio:1.6/1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-right:1px solid var(--line);
+  background:#080808;padding:16px;text-align:center;gap:8px;
+}
+.partner-cell:last-child{border-right:none}
+.partner-cell .pname{
+  font-family:'Archivo Black',sans-serif;font-size:16px;
+  text-transform:uppercase;letter-spacing:-0.01em;color:var(--cream);
+}
+.partner-cell .ptag{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
+}
+
+/* =========================================================
+   07 · NO HACER
+   ========================================================= */
+.nope-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  border:1px solid var(--line);
+}
+.nope{
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:#0B0B0B;
+  padding:24px;
+}
+.nope:nth-child(3n){border-right:none}
+.nope:nth-last-child(-n+3){border-bottom:none}
+.nope .ntag{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.22em;text-transform:uppercase;color:var(--danger);
+  margin-bottom:16px;
+}
+.nope .ntag .id{color:var(--text-mute)}
+.nope .ndemo{
+  background:var(--black);border:1px solid var(--line-hi);
+  padding:24px;min-height:120px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;margin-bottom:16px;
+}
+.nope .ndemo::after{
+  content:"";position:absolute;inset:8px;
+  pointer-events:none;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 1px), var(--danger) 50%, transparent calc(50% + 1px));
+  opacity:0.7;
+}
+.nope h4{
+  font-family:'Archivo Black',sans-serif;font-size:14px;
+  text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:8px;color:var(--cream);
+}
+.nope p{font-size:12px;line-height:1.5;color:#B9B6AE}
+
+/* Demo distortions */
+.dist-stretch{transform:scaleX(1.6)}
+.dist-skew{transform:skewX(-18deg)}
+.dist-rotate{transform:rotate(-12deg)}
+.dist-bg{background:repeating-linear-gradient(45deg,#444,#444 8px,#666 8px,#666 16px);padding:16px}
+.dist-gradient{background:linear-gradient(45deg,#FF0080,#7928CA);padding:16px}
+.dist-shadow{filter:drop-shadow(4px 4px 0 #fff) drop-shadow(-4px -4px 0 var(--gold))}
+
+/* =========================================================
+   08 · ROADMAP
+   ========================================================= */
+.roadmap{
+  display:grid;grid-template-columns:1fr;gap:0;
+  border:1px solid var(--line);
+}
+.road-row{
+  display:grid;
+  grid-template-columns:60px 1fr 100px 120px 140px;
+  gap:24px;padding:20px 24px;
+  border-bottom:1px solid var(--line);
+  align-items:center;
+}
+.road-row:last-child{border-bottom:none}
+.road-row.head{
+  background:#0B0B0B;
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);
+}
+.road-row .rno{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:0.15em;color:var(--gold);font-weight:500;
+}
+.road-row .ritem{
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:14px;
+  text-transform:uppercase;letter-spacing:0.04em;color:var(--cream);
+}
+.road-row .ritem small{
+  display:block;font-weight:400;font-size:11px;
+  color:var(--text-mute);text-transform:none;letter-spacing:0.02em;
+  margin-top:4px;
+}
+.road-row .rpr{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.2em;text-transform:uppercase;
+}
+.road-row .rpr.urgent{color:var(--danger)}
+.road-row .rpr.high{color:var(--gold)}
+.road-row .rpr.med{color:var(--cream)}
+.road-row .rpr.low{color:var(--text-mute)}
+.road-row .rform{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.15em;text-transform:uppercase;color:var(--text-mute);
+}
+.road-row .rphase{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.18em;text-transform:uppercase;
+}
+.road-row .rphase.p1{color:var(--danger)}
+.road-row .rphase.p2{color:var(--gold)}
+.road-row .rphase.p3{color:var(--text-mute)}
+
+/* =========================================================
+   FOOTER / METADATA
+   ========================================================= */
+footer{
+  max-width:var(--max);margin:0 auto;padding:80px 48px 120px;
+}
+.meta-block{
+  background:#0B0B0B;border:1px solid var(--line);
+  padding:48px;
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;
+}
+.meta-block h3{
+  font-family:'Archivo Black',sans-serif;font-size:24px;
+  text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:24px;
+}
+.meta-list{list-style:none}
+.meta-list li{
+  padding:12px 0;border-bottom:1px solid var(--line);
+  font-size:13px;line-height:1.5;color:#B9B6AE;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.meta-list li:last-child{border-bottom:none}
+.meta-list li::before{
+  content:"";display:inline-block;flex-shrink:0;
+  width:8px;height:8px;background:var(--gold);margin-top:6px;
+}
+.meta-list li b{color:var(--cream);font-weight:600;display:block;margin-bottom:2px;font-size:13px;text-transform:uppercase;letter-spacing:0.04em}
+
+.colofon{
+  margin-top:48px;padding-top:32px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--text-mute);
+}
+.colofon b{color:var(--gold);font-weight:500}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 980px){
+  .corner{display:none}
+  .frame{margin:8px}
+  section{padding:80px 24px 56px}
+  .hero{padding:48px 24px}
+  .hero-bottom{grid-template-columns:repeat(2,1fr)}
+  .toc{grid-template-columns:1fr}
+  .toc a{border-right:none}
+  .manifesto-grid{grid-template-columns:1fr}
+  .col-6,.col-4,.col-3,.col-8{grid-column:span 12}
+  .values-grid{grid-template-columns:repeat(2,1fr)}
+  .voice{grid-template-columns:1fr}
+  .logo-showcase{grid-template-columns:repeat(2,1fr)}
+  .logo-cell:nth-child(2n){border-right:none}
+  .logo-hierarchy{grid-template-columns:1fr}
+  .construction{grid-template-columns:1fr;padding:24px}
+  .color-grid{grid-template-columns:1fr}
+  .color-card{border-right:none !important}
+  .combos{grid-template-columns:1fr}
+  .contrast-grid{grid-template-columns:1fr}
+  .type-families{grid-template-columns:1fr}
+  .type-rules{grid-template-columns:1fr}
+  .scale-row{grid-template-columns:80px 1fr;gap:12px}
+  .scale-row .size,.scale-row .weight{display:none}
+  .apps-grid{grid-template-columns:1fr}
+  .nope-grid{grid-template-columns:1fr}
+  .nope:nth-child(n){border-right:none}
+  .partners-grid{grid-template-columns:repeat(2,1fr)}
+  .partner-cell:nth-child(2n){border-right:none}
+  .road-row{grid-template-columns:40px 1fr;gap:8px}
+  .road-row .rpr,.road-row .rform,.road-row .rphase{display:none}
+  .road-row.head{display:none}
+  .cobranding{grid-template-columns:1fr}
+  .meta-block{grid-template-columns:1fr;padding:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     GLOBAL FRAME + CORNERS
+     ============================================================ -->
+<div class="frame"></div>
+<div class="corner tl">MCH · BRAND SYSTEM<br><b>v1.0 · 2026·05·12</b></div>
+<div class="corner tr">SALTA · ARGENTINA<br><b>−24.7821° · −65.4232°</b></div>
+<div class="corner bl">REF · MCH·BS·2026·001<br><b>CLASIFICACIÓN · INTERNA</b></div>
+<div class="corner br">GRUPO MARC CHAGALL SAS<br><b>UNIDAD · MCH SOLUCIONES</b></div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero">
+  <div class="hero-grid-bg"></div>
+
+  <div class="hero-top">
+    <div class="hero-meta">
+      <div><b>SISTEMA</b> · IDENTIDAD VISUAL</div>
+      <div>DOCUMENTO · MCH·BS·V1·2026</div>
+      <div>GENERADO · 2026·05·12</div>
+    </div>
+    <div class="hero-meta" style="text-align:right">
+      <div><b>SUBMARCA</b> · MCH SOLUCIONES</div>
+      <div>MATRIZ · GRUPO MARC CHAGALL SAS</div>
+      <div>SECTOR · TECNOLOGÍA INDUSTRIAL · NOA</div>
+    </div>
+  </div>
+
+  <div class="hero-center">
+    <div class="hero-wordmark">MCH<span class="acc">·</span></div>
+    <div class="hero-descriptor">
+      <span class="dot"></span>
+      <span>SOLUCIONES</span>
+      <span style="color:var(--text-mute)">/</span>
+      <span style="color:var(--text-mute)">TECNOLOGÍA INDUSTRIAL PARA EL NOA</span>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-stat"><b>1985</b>AÑO DE FUNDACIÓN<br>DEL GRUPO MATRIZ</div>
+    <div class="hero-stat"><b>40+</b>AÑOS EN SALTA<br>PRESENCIA FÍSICA</div>
+    <div class="hero-stat"><b>3</b>UNIDADES OPERATIVAS<br>MCH · MACH · MARC CHAGALL</div>
+    <div class="hero-stat"><b>5</b>LÍNEAS PRODUCTO<br>DRONES · CCTV · GPS · TÉRMICA · COM</div>
+  </div>
+</header>
+
+<!-- ============================================================
+     TOC
+     ============================================================ -->
+<nav class="toc">
+  <a href="#s01"><span><span class="num">01 ·</span> &nbsp; Manifiesto de marca</span><span>→</span></a>
+  <a href="#s02"><span><span class="num">02 ·</span> &nbsp; Logo principal y variantes</span><span>→</span></a>
+  <a href="#s03"><span><span class="num">03 ·</span> &nbsp; Sistema cromático</span><span>→</span></a>
+  <a href="#s04"><span><span class="num">04 ·</span> &nbsp; Sistema tipográfico</span><span>→</span></a>
+  <a href="#s05"><span><span class="num">05 ·</span> &nbsp; Aplicaciones</span><span>→</span></a>
+  <a href="#s06"><span><span class="num">06 ·</span> &nbsp; Arquitectura de marca</span><span>→</span></a>
+  <a href="#s07"><span><span class="num">07 ·</span> &nbsp; Guía de no-hacer</span><span>→</span></a>
+  <a href="#s08"><span><span class="num">08 ·</span> &nbsp; Roadmap de implementación</span><span>→</span></a>
+</nav>
+
+<!-- ============================================================
+     01 · MANIFIESTO
+     ============================================================ -->
+<section id="s01">
+  <div class="section-tag">
+    <span class="num">01</span>
+    <span class="bar"></span>
+    <span>MANIFIESTO DE MARCA</span>
+    <span class="bar"></span>
+    <span class="mute">PARTE 1 DE 8</span>
+  </div>
+  <h2 class="section-title">Manifiesto<br>de marca.</h2>
+  <p class="section-sub">El relato base de MCH Soluciones. Posicionamiento, misión, visión, valores, taglines y tono de voz. Todo lo que el resto del sistema visual va a tener que defender.</p>
+
+  <!-- Positioning -->
+  <p class="positioning">
+    MCH Soluciones es el <span class="acc">brazo de tecnología industrial</span> del Grupo Marc Chagall en el NOA: <span class="acc">drones, CCTV, telemática, térmica y comunicaciones</span> integradas con presencia local, demo en sitio y un único punto de soporte.
+  </p>
+
+  <!-- Manifesto grid -->
+  <div class="manifesto-grid">
+    <div class="block col-6">
+      <div class="block-tag"><span>MISIÓN</span><span class="id">REF·01·M</span></div>
+      <h3>Cerramos la brecha entre<br>el catálogo y la operación.</h3>
+      <p>Las grandes mineras del litio del NOA dependen de proveedores tecnológicos sin presencia local: catálogos que llegan tarde, soporte que se mide en días hábiles desde Buenos Aires, y demos que nunca pisan el yacimiento. MCH existe para resolver eso: integrar drones, CCTV, telemática, térmica y comunicaciones en una sola propuesta, con asesoramiento humano y demos en sitio, desde Salta.</p>
+    </div>
+    <div class="block col-6">
+      <div class="block-tag"><span>VISIÓN</span><span class="id">REF·01·V</span></div>
+      <h3>Ser el proveedor por<br>defecto del NOA en 2030.</h3>
+      <p>En cinco años queremos que ninguna licitación tecnológica relevante en Salta, Jujuy o Catamarca se cierre sin que MCH haya cotizado. Queremos ser el integrador que las mineras llaman primero cuando hay un problema operativo, y la primera referencia que los partners globales mencionan cuando piensan en NOA. Local por convicción, multinacional por estándar.</p>
+    </div>
+  </div>
+
+  <!-- Values -->
+  <div class="values-grid">
+    <div class="value">
+      <span class="vn">V·01</span>
+      <h4>Cercanía<br>física.</h4>
+      <p class="op">DEFINICIÓN OPERATIVA</p>
+      <p>Toda propuesta superior a USD 10.000 se presenta en sitio antes de firmar. Sin excepción. La presencia física es nuestra ventaja competitiva irrenunciable.</p>
+    </div>
+    <div class="value">
+      <span class="vn">V·02</span>
+      <h4>Integración<br>multi-marca.</h4>
+      <p class="op">DEFINICIÓN OPERATIVA</p>
+      <p>Nunca casados con un fabricante. Si el problema del cliente se resuelve mejor con Hytera que con Motorola, vamos con Hytera. El criterio es la operación, no el partnership.</p>
+    </div>
+    <div class="value">
+      <span class="vn">V·03</span>
+      <h4>Procurement<br>real.</h4>
+      <p class="op">DEFINICIÓN OPERATIVA</p>
+      <p>Entendemos los pliegos. Sabemos cómo se compra en una minera y cómo se compra en una repartición pública. Operamos con Marc Chagall para procesos minoristas y de licitación, con MACH para soluciones digitales y de IA, y con MCH para el privado industrial, sin mezcla de canales.</p>
+    </div>
+    <div class="value">
+      <span class="vn">V·04</span>
+      <h4>Asesoramiento<br>humano.</h4>
+      <p class="op">DEFINICIÓN OPERATIVA</p>
+      <p>El cliente habla con una persona. Siempre. Nada de chatbots, nada de portales auto-gestionados. Si la consulta llega un sábado, alguien responde el sábado. Ese costo lo absorbemos nosotros, no el cliente.</p>
+    </div>
+  </div>
+
+  <!-- Taglines -->
+  <div class="taglines">
+    <div class="block-tag" style="margin-bottom:24px"><span>TAGLINES</span><span class="id">REF·01·T</span></div>
+    <div class="tagline-main">
+      Tecnología que llega <span class="acc">/</span><br>al yacimiento.
+    </div>
+    <div class="tagline-alts">
+      <div>
+        <b>ALT · 01 · LICITACIÓN</b>
+        Integramos lo que el NOA necesita operar.
+      </div>
+      <div>
+        <b>ALT · 02 · COMERCIAL</b>
+        Te asesoramos nosotros, no un algoritmo.
+      </div>
+    </div>
+  </div>
+
+  <!-- Voice -->
+  <div class="voice">
+    <div class="voice-adjectives">
+      <div class="ttl">TONO · 3 ADJETIVOS</div>
+      <div class="adj">Técnico</div>
+      <div class="adj">Directo</div>
+      <div class="adj">Confiable</div>
+    </div>
+    <div class="voice-examples">
+      <div class="voice-cell si">
+        <div class="tag">DECIMOS</div>
+        <div class="ex">"Mavic 3E con sensor RGB de 4/3", 56× zoom, RTK opcional. Disponibilidad inmediata, demo en sitio sin cargo."</div>
+        <div class="ex">"Cotizamos la integración completa: drones, radios, telemática y un solo punto de soporte en Salta."</div>
+      </div>
+      <div class="voice-cell no">
+        <div class="tag">NO DECIMOS</div>
+        <div class="ex">"Soluciones premium de última generación para clientes exigentes que buscan calidad de excelencia."</div>
+        <div class="ex">"Innovamos transformando el futuro de la minería con tecnología disruptiva 4.0."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     02 · LOGO
+     ============================================================ -->
+<section id="s02">
+  <div class="section-tag">
+    <span class="num">02</span>
+    <span class="bar"></span>
+    <span>LOGO PRINCIPAL Y VARIANTES</span>
+    <span class="bar"></span>
+    <span class="mute">PARTE 2 DE 8</span>
+  </div>
+  <h2 class="section-title">Logo principal<br>y variantes.</h2>
+  <p class="section-sub">El logo de MCH Soluciones es un wordmark dominante con un símbolo geométrico complementario. El wordmark es la voz; el símbolo es la firma. Diseño construido para sobrevivir a un bordado en chaleco refractario, a una calcomanía de 10 mm en un equipo Geotab, y a un hero de 4K en una pantalla de licitación.</p>
+
+  <!-- Showcase: 4 backgrounds -->
+  <div class="logo-showcase">
+    <div class="logo-cell black">
+      <div class="meta"><b>FONDO·01</b> NEGRO #000</div>
+      <!-- LOGO FULL ON BLACK -->
+      <svg class="logo-full" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg" aria-label="MCH Soluciones">
+        <!-- Icon: block with negative chevron -->
+        <g transform="translate(0,16)">
+          <rect x="0" y="0" width="88" height="88" fill="#C9A961"/>
+          <path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000000"/>
+        </g>
+        <!-- Wordmark -->
+        <g transform="translate(108,0)">
+          <text x="0" y="64" font-family="Archivo Black, sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text>
+          <line x1="0" y1="78" x2="180" y2="78" stroke="#C9A961" stroke-width="1.5"/>
+          <text x="0" y="100" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="4" fill="#F5F5F5">SOLUCIONES</text>
+          <text x="180" y="100" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" fill="#7A7A75" text-anchor="end">NOA · AR</text>
+        </g>
+      </svg>
+    </div>
+    <div class="logo-cell cream">
+      <div class="meta"><b>FONDO·02</b> CREMA #F5F5F5</div>
+      <svg class="logo-full" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg" aria-label="MCH Soluciones">
+        <g transform="translate(0,16)">
+          <rect x="0" y="0" width="88" height="88" fill="#000000"/>
+          <path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#C9A961"/>
+        </g>
+        <g transform="translate(108,0)">
+          <text x="0" y="64" font-family="Archivo Black, sans-serif" font-size="64" letter-spacing="-3" fill="#000000">MCH</text>
+          <line x1="0" y1="78" x2="180" y2="78" stroke="#000000" stroke-width="1.5"/>
+          <text x="0" y="100" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="4" fill="#000000">SOLUCIONES</text>
+          <text x="180" y="100" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" fill="rgba(0,0,0,0.5)" text-anchor="end">NOA · AR</text>
+        </g>
+      </svg>
+    </div>
+    <div class="logo-cell gold">
+      <div class="meta"><b>FONDO·03</b> DORADO #C9A961</div>
+      <svg class="logo-full" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg" aria-label="MCH Soluciones">
+        <g transform="translate(0,16)">
+          <rect x="0" y="0" width="88" height="88" fill="#000000"/>
+          <path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#C9A961"/>
+        </g>
+        <g transform="translate(108,0)">
+          <text x="0" y="64" font-family="Archivo Black, sans-serif" font-size="64" letter-spacing="-3" fill="#000000">MCH</text>
+          <line x1="0" y1="78" x2="180" y2="78" stroke="#000000" stroke-width="1.5"/>
+          <text x="0" y="100" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="4" fill="#000000">SOLUCIONES</text>
+          <text x="180" y="100" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" fill="rgba(0,0,0,0.55)" text-anchor="end">NOA · AR</text>
+        </g>
+      </svg>
+    </div>
+    <div class="logo-cell green">
+      <div class="meta"><b>FONDO·04</b> VERDE INGLÉS #14342B</div>
+      <svg class="logo-full" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg" aria-label="MCH Soluciones">
+        <g transform="translate(0,16)">
+          <rect x="0" y="0" width="88" height="88" fill="#C9A961"/>
+          <path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#14342B"/>
+        </g>
+        <g transform="translate(108,0)">
+          <text x="0" y="64" font-family="Archivo Black, sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text>
+          <line x1="0" y1="78" x2="180" y2="78" stroke="#C9A961" stroke-width="1.5"/>
+          <text x="0" y="100" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="4" fill="#F5F5F5">SOLUCIONES</text>
+          <text x="180" y="100" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2" fill="rgba(245,245,245,0.55)" text-anchor="end">NOA · AR</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Hierarchy -->
+  <div class="logo-hierarchy">
+    <div class="hier">
+      <div class="htag"><span>JERARQUÍA·01</span><span class="n">COMPLETA</span></div>
+      <div class="hbox">
+        <svg viewBox="0 0 320 120" style="width:100%;height:auto;max-width:280px">
+          <g transform="translate(0,16)">
+            <rect x="0" y="0" width="88" height="88" fill="#C9A961"/>
+            <path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000000"/>
+          </g>
+          <g transform="translate(108,0)">
+            <text x="0" y="64" font-family="Archivo Black, sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text>
+            <line x1="0" y1="78" x2="180" y2="78" stroke="#C9A961" stroke-width="1.5"/>
+            <text x="0" y="100" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="4" fill="#F5F5F5">SOLUCIONES</text>
+          </g>
+        </svg>
+      </div>
+      <p class="hcap"><b>Uso institucional</b>Cotizaciones, propuestas, contratos, primera página de website, firma de email formal.</p>
+    </div>
+    <div class="hier">
+      <div class="htag"><span>JERARQUÍA·02</span><span class="n">REDUCIDA</span></div>
+      <div class="hbox">
+        <svg viewBox="0 0 320 120" style="width:100%;height:auto;max-width:280px">
+          <g transform="translate(40,16)">
+            <rect x="0" y="0" width="88" height="88" fill="#C9A961"/>
+            <path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000000"/>
+          </g>
+          <g transform="translate(148,0)">
+            <text x="0" y="74" font-family="Archivo Black, sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text>
+          </g>
+        </svg>
+      </div>
+      <p class="hcap"><b>Uso secundario</b>Header de website navegado, redes sociales, materiales internos, sponsorships donde la marca aparece junto a partners.</p>
+    </div>
+    <div class="hier">
+      <div class="htag"><span>JERARQUÍA·03</span><span class="n">ÍCONO</span></div>
+      <div class="hbox" style="gap:24px">
+        <svg viewBox="0 0 88 88" style="width:72px;height:72px">
+          <rect width="88" height="88" fill="#C9A961"/>
+          <path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000000"/>
+        </svg>
+        <svg viewBox="0 0 88 88" style="width:72px;height:72px">
+          <circle cx="44" cy="44" r="44" fill="#C9A961"/>
+          <path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000000"/>
+        </svg>
+      </div>
+      <p class="hcap"><b>Avatar / favicon</b>Únicas situaciones donde el wordmark se sacrifica: stickers chicos, app icons, favicons, marca en equipo embarcado.</p>
+    </div>
+  </div>
+
+  <!-- Construction -->
+  <div class="construction">
+    <div class="construction-svg">
+      <svg viewBox="0 0 320 320" style="width:100%;height:auto">
+        <!-- Grid -->
+        <defs>
+          <pattern id="grid8" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(201,169,97,0.15)" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="320" height="320" fill="url(#grid8)"/>
+        <!-- Outer protection area -->
+        <rect x="20" y="20" width="280" height="280" fill="none" stroke="#C9A961" stroke-dasharray="3 3" stroke-width="0.5" opacity="0.6"/>
+        <!-- Icon centered -->
+        <g transform="translate(60,60)">
+          <rect x="0" y="0" width="200" height="200" fill="#C9A961"/>
+          <path d="M27 55 L59 55 L59 155 L27 155 Z M34 41 L52 41 L52 55 L34 55 Z M141 55 L173 55 L173 155 L141 155 Z M148 41 L166 41 L166 55 L148 55 Z M59 55 L68 55 L100 105 L132 55 L141 55 L141 73 L109 114 L91 114 L59 73 Z" fill="#000000"/>
+        </g>
+        <!-- Measurement labels -->
+        <text x="10" y="60" font-family="JetBrains Mono, monospace" font-size="8" fill="#C9A961" transform="rotate(-90 10 60)">X · UNIDAD BASE</text>
+        <line x1="60" y1="50" x2="260" y2="50" stroke="#C9A961" stroke-width="0.5"/>
+        <line x1="60" y1="45" x2="60" y2="55" stroke="#C9A961" stroke-width="0.5"/>
+        <line x1="260" y1="45" x2="260" y2="55" stroke="#C9A961" stroke-width="0.5"/>
+        <text x="160" y="42" font-family="JetBrains Mono, monospace" font-size="8" fill="#C9A961" text-anchor="middle">10X</text>
+
+        <line x1="50" y1="60" x2="50" y2="260" stroke="#C9A961" stroke-width="0.5"/>
+        <line x1="45" y1="60" x2="55" y2="60" stroke="#C9A961" stroke-width="0.5"/>
+        <line x1="45" y1="260" x2="55" y2="260" stroke="#C9A961" stroke-width="0.5"/>
+        <text x="45" y="160" font-family="JetBrains Mono, monospace" font-size="8" fill="#C9A961" text-anchor="end">10X</text>
+
+        <!-- Chevron internal measure -->
+        <line x1="60" y1="290" x2="260" y2="290" stroke="rgba(245,245,245,0.4)" stroke-width="0.5"/>
+        <text x="160" y="305" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(245,245,245,0.6)" text-anchor="middle">CONSTRUCCIÓN GEOMÉTRICA · GRILLA 10×10</text>
+      </svg>
+    </div>
+    <div class="construction-info">
+      <h3>Construcción<br>geométrica.</h3>
+      <p>El bloque-ícono se construye sobre una grilla 10×10 unidades. La silueta interior es una <b>M Art Deco</b>: dos pilares verticales con coronamientos escalonados tipo ziggurat — referencia directa al lenguaje arquitectónico Chrysler · Empire State · 1930 — unidos por un chevron diagonal central. Tres lecturas simultáneas convergen: <b>M de MCH</b>, <b>M de Marc Chagall</b> y <b>terraza minera</b> del NOA.</p>
+      <p>El espacio en negativo es un símbolo deliberado: la marca no agrega, sustrae. Codifica claridad, estructura industrial y herencia visual Deco. El sistema rectangular vertical más el chevron central distingue a MCH del territorio chevron-arrow horizontal que ocupan Epiroc y otros competidores globales.</p>
+      <ul>
+        <li><span>Unidad base</span><b>X = 10% LADO</b></li>
+        <li><span>Ratio ícono</span><b>1 : 1 CUADRADO</b></li>
+        <li><span>Ratio firma</span><b>1 : 3.6 HORIZONTAL</b></li>
+        <li><span>Área de protección</span><b>2X EN TODOS LADOS</b></li>
+        <li><span>Separación con texto</span><b>20% ANCHO ÍCONO</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Scale test -->
+  <div class="scale-test">
+    <div class="scale-item">
+      <div class="sbox" style="width:16px;height:16px">
+        <svg viewBox="0 0 88 88" width="14" height="14"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></svg>
+      </div>
+      <div class="scap"><b>16PX</b>FAVICON</div>
+    </div>
+    <div class="scale-item">
+      <div class="sbox" style="width:32px;height:32px">
+        <svg viewBox="0 0 88 88" width="28" height="28"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></svg>
+      </div>
+      <div class="scap"><b>32PX</b>APP·MOBILE</div>
+    </div>
+    <div class="scale-item">
+      <div class="sbox" style="width:64px;height:64px">
+        <svg viewBox="0 0 88 88" width="56" height="56"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></svg>
+      </div>
+      <div class="scap"><b>64PX</b>AVATAR·UI</div>
+    </div>
+    <div class="scale-item">
+      <div class="sbox" style="width:160px;height:60px">
+        <svg viewBox="0 0 320 120" style="width:140px;height:auto">
+          <g transform="translate(0,16)"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></g>
+          <g transform="translate(108,0)">
+            <text x="0" y="64" font-family="Archivo Black,sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text>
+            <text x="0" y="100" font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="4" fill="#F5F5F5">SOLUCIONES</text>
+          </g>
+        </svg>
+      </div>
+      <div class="scap"><b>160PX</b>HEADER·WEB</div>
+    </div>
+    <div class="scale-item">
+      <div class="sbox" style="width:360px;height:135px;max-width:80vw">
+        <svg viewBox="0 0 320 120" style="width:100%;height:auto;max-width:330px">
+          <g transform="translate(0,16)"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></g>
+          <g transform="translate(108,0)">
+            <text x="0" y="64" font-family="Archivo Black,sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text>
+            <line x1="0" y1="78" x2="180" y2="78" stroke="#C9A961" stroke-width="1.5"/>
+            <text x="0" y="100" font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="4" fill="#F5F5F5">SOLUCIONES</text>
+          </g>
+        </svg>
+      </div>
+      <div class="scap"><b>360PX</b>HERO·MARKETING</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     03 · COLOR
+     ============================================================ -->
+<section id="s03">
+  <div class="section-tag">
+    <span class="num">03</span>
+    <span class="bar"></span>
+    <span>SISTEMA CROMÁTICO</span>
+    <span class="bar"></span>
+    <span class="mute">PARTE 3 DE 8</span>
+  </div>
+  <h2 class="section-title">Sistema<br>cromático.</h2>
+  <p class="section-sub">Cuatro colores heredados del Grupo más dos neutros operativos. La regla no negociable: el dorado nunca supera el 10% de la composición. Esa restricción es la que separa a MCH del territorio "joyería/premium" y la posiciona en "industrial moderno".</p>
+
+  <!-- Color grid -->
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch dk" style="background:#000000"><span class="role">PRIMARIO · BASE</span></div>
+      <div class="color-info">
+        <h4>Negro Operativo</h4>
+        <div class="codes">
+          <div><span>HEX</span><b>#000000</b></div>
+          <div><span>RGB</span><b>0 · 0 · 0</b></div>
+          <div><span>CMYK</span><b>0 · 0 · 0 · 100</b></div>
+          <div><span>PROPORCIÓN</span><b>60%</b></div>
+        </div>
+        <p class="why">Fondo dominante. Codifica autoridad técnica e industrial. Es la base sobre la que el resto de los colores actúa como información.</p>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch lt" style="background:#C9A961"><span class="role">ACENTO · FIRMA</span></div>
+      <div class="color-info">
+        <h4>Dorado MCH</h4>
+        <div class="codes">
+          <div><span>HEX</span><b>#C9A961</b></div>
+          <div><span>RGB</span><b>201 · 169 · 97</b></div>
+          <div><span>CMYK</span><b>15 · 30 · 70 · 5</b></div>
+          <div><span>PROPORCIÓN</span><b>≤ 10%</b></div>
+        </div>
+        <p class="why">Color firma heredado del Grupo. Usado siempre como acento, nunca como masa. Aparece en líneas, símbolos y micro-detalles; jamás como background extenso.</p>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch dk" style="background:#14342B"><span class="role">INSTITUCIONAL</span></div>
+      <div class="color-info">
+        <h4>Verde Inglés</h4>
+        <div class="codes">
+          <div><span>HEX</span><b>#14342B</b></div>
+          <div><span>RGB</span><b>20 · 52 · 43</b></div>
+          <div><span>CMYK</span><b>85 · 50 · 75 · 70</b></div>
+          <div><span>PROPORCIÓN</span><b>15%</b></div>
+        </div>
+        <p class="why">Color institucional secundario. Aparece en bloques de contexto, citas, headers de propuestas formales. Asocia con sustentabilidad sin caer en el verde corporativo cliché.</p>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch lt" style="background:#F5F5F5"><span class="role">NEUTRO · TEXTO</span></div>
+      <div class="color-info">
+        <h4>Crema Hueso</h4>
+        <div class="codes">
+          <div><span>HEX</span><b>#F5F5F5</b></div>
+          <div><span>RGB</span><b>245 · 245 · 245</b></div>
+          <div><span>CMYK</span><b>0 · 0 · 0 · 5</b></div>
+          <div><span>PROPORCIÓN</span><b>10%</b></div>
+        </div>
+        <p class="why">Texto principal sobre negro. Crema, no blanco puro: reduce el contraste agresivo y aporta calidez sin perder lectura. Detalle que separa documento técnico moderno de PDF gubernamental.</p>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch dk" style="background:#0B0B0B"><span class="role">OPERATIVO · BLOQUE</span></div>
+      <div class="color-info">
+        <h4>Negro Bloque</h4>
+        <div class="codes">
+          <div><span>HEX</span><b>#0B0B0B</b></div>
+          <div><span>RGB</span><b>11 · 11 · 11</b></div>
+          <div><span>CMYK</span><b>0 · 0 · 0 · 95</b></div>
+          <div><span>PROPORCIÓN</span><b>10%</b></div>
+        </div>
+        <p class="why">Variante operativa del negro. Crea jerarquía visual en interfaces y documentos sin introducir un tercer tono. Diferencia "bloques de contenido" del fondo general.</p>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch dk" style="background:#C8341F"><span class="role">SISTEMA · ALERTA</span></div>
+      <div class="color-info">
+        <h4>Rojo Señal</h4>
+        <div class="codes">
+          <div><span>HEX</span><b>#C8341F</b></div>
+          <div><span>RGB</span><b>200 · 52 · 31</b></div>
+          <div><span>CMYK</span><b>10 · 90 · 95 · 5</b></div>
+          <div><span>PROPORCIÓN</span><b>&lt; 2%</b></div>
+        </div>
+        <p class="why">Único color fuera de la paleta institucional. Reservado exclusivamente para señalética de error, urgencia o "no-hacer". Nunca decorativo. Su escasez es su poder.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Proportions -->
+  <div class="proportions">
+    <h3>Reglas de proporción</h3>
+    <div class="prop-bar">
+      <div style="background:#000000;width:60%;color:#F5F5F5">60% · NEGRO</div>
+      <div style="background:#14342B;width:15%;color:#F5F5F5">15%</div>
+      <div style="background:#0B0B0B;width:10%;color:#F5F5F5">10%</div>
+      <div style="background:#F5F5F5;width:10%;color:#000">10%</div>
+      <div style="background:#C9A961;width:5%;color:#000">5%</div>
+    </div>
+    <div class="prop-legend">
+      <div><span class="sw" style="background:#000;border:1px solid #333"></span> <b>60%</b> · NEGRO BASE</div>
+      <div><span class="sw" style="background:#14342B"></span> <b>15%</b> · VERDE INSTITUCIONAL</div>
+      <div><span class="sw" style="background:#F5F5F5"></span> <b>10%</b> · CREMA · TEXTO</div>
+      <div><span class="sw" style="background:#C9A961"></span> <b>5%</b> · DORADO · ACENTO</div>
+    </div>
+  </div>
+
+  <!-- Combos -->
+  <div class="combos">
+    <div class="combo-block ok">
+      <div class="ctag">COMBINACIONES · VÁLIDAS</div>
+      <div class="combo-row">
+        <div class="combo-cell" style="background:#000;color:#F5F5F5">MCH</div>
+        <div class="combo-cell" style="background:#000;color:#C9A961">MCH</div>
+        <div class="combo-cell" style="background:#14342B;color:#F5F5F5">MCH</div>
+      </div>
+      <div class="combo-row">
+        <div class="combo-cell" style="background:#F5F5F5;color:#000">MCH</div>
+        <div class="combo-cell" style="background:#C9A961;color:#000">MCH</div>
+        <div class="combo-cell" style="background:#14342B;color:#C9A961">MCH</div>
+      </div>
+    </div>
+    <div class="combo-block no">
+      <div class="ctag">COMBINACIONES · PROHIBIDAS</div>
+      <div class="combo-row">
+        <div class="combo-cell cross" style="background:#C9A961;color:#F5F5F5">MCH</div>
+        <div class="combo-cell cross" style="background:#14342B;color:#000">MCH</div>
+        <div class="combo-cell cross" style="background:#F5F5F5;color:#C9A961">MCH</div>
+      </div>
+      <div class="combo-row">
+        <div class="combo-cell cross" style="background:#C8341F;color:#C9A961">MCH</div>
+        <div class="combo-cell cross" style="background:#000;color:#C8341F">MCH</div>
+        <div class="combo-cell cross" style="background:linear-gradient(45deg,#C9A961,#14342B);color:#F5F5F5">MCH</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contrast -->
+  <div class="contrast">
+    <h3>Contraste WCAG · Accesibilidad</h3>
+    <div class="contrast-grid">
+      <div class="contrast-card" style="background:#000">
+        <div class="sample" style="color:#F5F5F5">MCH</div>
+        <div class="ratio">RATIO · <b>20.4 : 1</b></div>
+        <div class="wcag">CREMA / NEGRO · <span class="pass">AAA · TODOS LOS TAMAÑOS</span></div>
+      </div>
+      <div class="contrast-card" style="background:#000">
+        <div class="sample" style="color:#C9A961">MCH</div>
+        <div class="ratio">RATIO · <b>8.9 : 1</b></div>
+        <div class="wcag">DORADO / NEGRO · <span class="pass">AAA · TODOS LOS TAMAÑOS</span></div>
+      </div>
+      <div class="contrast-card" style="background:#F5F5F5">
+        <div class="sample" style="color:#000">MCH</div>
+        <div class="ratio">RATIO · <b>20.4 : 1</b></div>
+        <div class="wcag" style="color:#000">NEGRO / CREMA · <span class="pass">AAA · TODOS LOS TAMAÑOS</span></div>
+      </div>
+      <div class="contrast-card" style="background:#14342B">
+        <div class="sample" style="color:#F5F5F5">MCH</div>
+        <div class="ratio">RATIO · <b>12.6 : 1</b></div>
+        <div class="wcag">CREMA / VERDE · <span class="pass">AAA · TODOS LOS TAMAÑOS</span></div>
+      </div>
+      <div class="contrast-card" style="background:#C9A961">
+        <div class="sample" style="color:#000">MCH</div>
+        <div class="ratio">RATIO · <b>9.1 : 1</b></div>
+        <div class="wcag" style="color:#000">NEGRO / DORADO · <span class="pass">AAA · TODOS LOS TAMAÑOS</span></div>
+      </div>
+      <div class="contrast-card" style="background:#C9A961">
+        <div class="sample" style="color:#F5F5F5">MCH</div>
+        <div class="ratio">RATIO · <b>2.2 : 1</b></div>
+        <div class="wcag" style="color:#000">CREMA / DORADO · <span class="fail">REPROBADO · NO USAR</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     04 · TIPOGRAFÍA
+     ============================================================ -->
+<section id="s04">
+  <div class="section-tag">
+    <span class="num">04</span>
+    <span class="bar"></span>
+    <span>SISTEMA TIPOGRÁFICO</span>
+    <span class="bar"></span>
+    <span class="mute">PARTE 4 DE 8</span>
+  </div>
+  <h2 class="section-title">Sistema<br>tipográfico.</h2>
+  <p class="section-sub">Dos familias, cero excepciones. Archivo Black para display y voz institucional; Archivo regular para body. JetBrains Mono para datos técnicos, etiquetas, metadata y coordenadas. La densidad técnica es deliberada: cada documento debe leerse como ficha de operación, no como brochure corporativo.</p>
+
+  <div class="type-families">
+    <div class="type-fam primary">
+      <div class="ftag"><span>TIPO·01 · DISPLAY + BODY</span><span style="color:var(--text-mute)">PRIMARIA</span></div>
+      <div class="fname">Archivo<br>Black</div>
+      <p class="fdesc">Sans-serif geométrico-grotesco de Omnibus-Type. Pesos del Light al Black. Elegida sobre Inter por carácter más industrial y menos "startup-tech"; sobre Space Grotesk por mejor legibilidad en cuerpos pequeños y en bloques de texto largos. Open-source, hosting estable en Google Fonts.</p>
+      <div class="fglyphs">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 0123456789 áéíóú — / · ()</div>
+    </div>
+    <div class="type-fam secondary">
+      <div class="ftag"><span>TIPO·02 · TÉCNICA / DATOS</span><span style="color:var(--text-mute)">SECUNDARIA</span></div>
+      <div class="fname">JetBrains<br>Mono</div>
+      <p class="fdesc">Monoespaciada diseñada por JetBrains para código. Aporta densidad técnica inmediata: tablas, etiquetas de metadata, referencias REF·001, coordenadas geográficas, números de cotización. Su sola presencia codifica "documento operativo real", no "marketing".</p>
+      <div class="fglyphs">REF·001 -24.7821°S MCH·BS·2026 [/] {·} {01..99}</div>
+    </div>
+  </div>
+
+  <!-- Type scale -->
+  <div class="type-scale">
+    <div class="scale-row hero">
+      <div class="label">HERO</div>
+      <div class="size">96 PX</div>
+      <div class="weight">BLACK · 900</div>
+      <div class="demo">MCH Soluciones</div>
+    </div>
+    <div class="scale-row h1">
+      <div class="label">H1</div>
+      <div class="size">64 PX</div>
+      <div class="weight">BLACK · 900</div>
+      <div class="demo">Tecnología que llega al yacimiento</div>
+    </div>
+    <div class="scale-row h2">
+      <div class="label">H2</div>
+      <div class="size">42 PX</div>
+      <div class="weight">BLACK · 900</div>
+      <div class="demo">Integramos lo que el NOA necesita operar</div>
+    </div>
+    <div class="scale-row h3">
+      <div class="label">H3</div>
+      <div class="size">18 PX</div>
+      <div class="weight">BOLD · 700 · UPPER</div>
+      <div class="demo">DRONES · CCTV · TELEMÁTICA</div>
+    </div>
+    <div class="scale-row body">
+      <div class="label">BODY</div>
+      <div class="size">14 PX</div>
+      <div class="weight">REGULAR · 400</div>
+      <div class="demo">Cotizamos la integración completa con un solo punto de soporte en Salta.</div>
+    </div>
+    <div class="scale-row caption">
+      <div class="label">CAPTION</div>
+      <div class="size">12 PX</div>
+      <div class="weight">MEDIUM · 500</div>
+      <div class="demo">Fuente: piloto certificado tercerizado · sin cargo en demo.</div>
+    </div>
+    <div class="scale-row mono">
+      <div class="label">MONO·TAG</div>
+      <div class="size">10 PX</div>
+      <div class="weight">JET·MONO · 400</div>
+      <div class="demo">REF·001 · MCH·BS·V1·2026·05·12 · −24.7821° · −65.4232°</div>
+    </div>
+  </div>
+
+  <!-- Specimen -->
+  <div class="type-specimen">
+    <div class="label">ESPÉCIMEN TIPOGRÁFICO · APLICACIÓN REAL</div>
+    <div class="specimen-hero">Salta opera <span class="acc">/</span><br>desde Salta.</div>
+    <div class="specimen-meta">
+      <div><b>APLICACIÓN</b>HERO LANDING · WEB</div>
+      <div><b>TIPO</b>ARCHIVO BLACK · 140PX</div>
+      <div><b>CONTRASTE</b>NEGRO / CREMA</div>
+      <div><b>USO</b>FIRMA INSTITUCIONAL</div>
+    </div>
+  </div>
+
+  <!-- Rules -->
+  <div class="type-rules">
+    <div class="rule">
+      <h4>Cuándo usar Archivo Black</h4>
+      <p>Títulos de sección, wordmark, taglines, hero copy, números destacados en infografías. Siempre en mayúscula o sentence case sin sangría. Nunca para body, nunca para tablas, nunca para texto legal.</p>
+    </div>
+    <div class="rule">
+      <h4>Cuándo usar Archivo Regular</h4>
+      <p>Body text, párrafos de cotización, descripciones de producto. Pesos 400 (regular) y 600 (semibold) para énfasis. Mayúsculas con tracking generoso (+0.08em) para H3 y subtítulos.</p>
+    </div>
+    <div class="rule">
+      <h4>Cuándo usar JetBrains Mono</h4>
+      <p>Toda metadata: referencias, fechas, coordenadas, números de cotización, etiquetas técnicas, footers de documento, tablas de especificaciones, números de parte. Tamaño máximo 14px — su rol es técnico, no titular.</p>
+    </div>
+    <div class="rule">
+      <h4>Pesos prohibidos</h4>
+      <p>Archivo Black Italic (no existe oficialmente, evitar simulado). Pesos Thin y ExtraLight (no resisten impresión a 4 colores ni serigrafía en chaleco). Cursivas decorativas: nunca. Subrayado: nunca, salvo links activos en interfaz web.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     05 · APLICACIONES
+     ============================================================ -->
+<section id="s05">
+  <div class="section-tag">
+    <span class="num">05</span>
+    <span class="bar"></span>
+    <span>APLICACIONES</span>
+    <span class="bar"></span>
+    <span class="mute">PARTE 5 DE 8</span>
+  </div>
+  <h2 class="section-title">Aplicaciones<br>en sistema.</h2>
+  <p class="section-sub">Seis piezas que prueban el sistema bajo condiciones reales: el bolsillo de un ingeniero, una mesa de licitación, el casco de un operario, una pantalla de teléfono, una bandeja de entrada y la góndola de un depósito. Si funciona acá, funciona.</p>
+
+  <div class="apps-grid">
+
+    <!-- BUSINESS CARD -->
+    <div class="app" style="grid-column:span 6">
+      <div class="atag"><span>APP·01 · TARJETA PERSONAL</span><span class="id">85 × 55 MM</span></div>
+      <h4>Tarjeta industrial</h4>
+      <div class="mockup">
+        <div class="bcard">
+          <div class="bc-top">
+            <div>
+              <div class="bc-name">Nicolás Franco<br>Srur Piselli</div>
+              <div class="bc-role">DIRECTOR · OPERACIONES</div>
+            </div>
+            <svg viewBox="0 0 88 88" width="36" height="36"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></svg>
+          </div>
+          <div class="bc-info">
+            <div><span class="lbl">TEL ·</span> +54 387 576 8065</div>
+            <div><span class="lbl">MAIL ·</span> NICO@MCHSOLUCIONES.COM.AR</div>
+            <div><span class="lbl">OFICINA ·</span> SALTA · ARGENTINA</div>
+            <div style="margin-top:6px;color:var(--gold)">MCH·SOLUCIONES · NOA · 2026</div>
+          </div>
+        </div>
+      </div>
+      <p class="acap">SOPORTE · CARTÓN MATE 350G · PANTONE BLACK 6 · FOIL DORADO</p>
+    </div>
+
+    <!-- QUOTATION HEADER -->
+    <div class="app" style="grid-column:span 6">
+      <div class="atag"><span>APP·02 · COTIZACIÓN</span><span class="id">A4 · 210 × 297 MM</span></div>
+      <h4>Propuesta comercial</h4>
+      <div class="mockup">
+        <div class="quote">
+          <div class="quote-head">
+            <svg viewBox="0 0 320 120" style="width:120px;height:auto">
+              <g transform="translate(0,16)"><rect width="88" height="88" fill="#000"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#C9A961"/></g>
+              <g transform="translate(108,0)">
+                <text x="0" y="64" font-family="Archivo Black,sans-serif" font-size="64" letter-spacing="-3" fill="#000">MCH</text>
+                <text x="0" y="100" font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="4" fill="#000">SOLUCIONES</text>
+              </g>
+            </svg>
+            <div class="qno">REF · 2026·0142</div>
+          </div>
+          <div class="quote-title-row">
+            <h2>Cotización<br>Mavic 3E + RTK</h2>
+            <div style="text-align:right">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.5)">VÁLIDA HASTA</div>
+              <div style="font-family:'Archivo Black',sans-serif;font-size:14px;letter-spacing:-0.01em">2026·06·30</div>
+            </div>
+          </div>
+          <div class="qmeta">
+            <div class="row"><span class="lbl">CLIENTE</span><span>MINERA DEL LITIO S.A.</span></div>
+            <div class="row"><span class="lbl">CONTACTO</span><span>ING. M. PEREYRA</span></div>
+            <div class="row"><span class="lbl">SITIO</span><span>OLAROZ · JUJUY</span></div>
+            <div class="row"><span class="lbl">EMITIDO</span><span>2026·05·12 · SALTA</span></div>
+          </div>
+          <table>
+            <thead><tr><th>ÍTEM</th><th>DETALLE</th><th style="text-align:right">USD</th></tr></thead>
+            <tbody>
+              <tr><td>01</td><td>DJI MAVIC 3E · SENSOR 4/3"</td><td style="text-align:right">3.890</td></tr>
+              <tr><td>02</td><td>MÓDULO RTK + ANTENA D-RTK 2</td><td style="text-align:right">2.450</td></tr>
+              <tr><td>03</td><td>PILOTO CERTIF · 8H · SITIO</td><td style="text-align:right">680</td></tr>
+              <tr><td>04</td><td>CAPACITACIÓN · 16H · IN SITU</td><td style="text-align:right">1.200</td></tr>
+            </tbody>
+          </table>
+          <div class="qfoot">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(0,0,0,0.6)">SUBTOTAL · IVA INC.</div>
+            <div class="total">USD 8.220</div>
+          </div>
+        </div>
+      </div>
+      <p class="acap">SOPORTE · A4 · NEGRO 100% K · SIN GRADIENTES · EXPORTABLE A PDF/X-1A</p>
+    </div>
+
+    <!-- STENCIL / VINYL -->
+    <div class="app" style="grid-column:span 4">
+      <div class="atag"><span>APP·03 · STENCIL</span><span class="id">CASCO + VINILO</span></div>
+      <h4>Stencil operativo</h4>
+      <div class="mockup">
+        <div class="stencil">
+          <div class="stencil-helmet">
+            <svg viewBox="0 0 320 120" style="width:120px;height:auto">
+              <g transform="translate(0,16)"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></g>
+              <g transform="translate(108,0)">
+                <text x="0" y="64" font-family="Archivo Black,sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text>
+              </g>
+            </svg>
+          </div>
+          <div class="stencil-vinyl">
+            <svg class="v-mark" viewBox="0 0 88 88" width="32" height="32"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></svg>
+            <div class="v-text">MCH SOLUCIONES<small>UNIDAD · 04 · SALTA</small></div>
+          </div>
+        </div>
+      </div>
+      <p class="acap">SOPORTE · VINILO FUNDIDO 5 AÑOS · SERIGRAFÍA PARA CASCO ABS</p>
+    </div>
+
+    <!-- AVATAR -->
+    <div class="app" style="grid-column:span 4">
+      <div class="atag"><span>APP·04 · AVATAR SOCIAL</span><span class="id">1024 × 1024 PX</span></div>
+      <h4>Avatar redes</h4>
+      <div class="mockup">
+        <div class="avatar">
+          <svg viewBox="0 0 88 88" style="width:60%;height:60%"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></svg>
+        </div>
+      </div>
+      <p class="acap">LINKEDIN · WHATSAPP BUSINESS · INSTAGRAM · CONTORNO 0PX</p>
+    </div>
+
+    <!-- STICKER -->
+    <div class="app" style="grid-column:span 4">
+      <div class="atag"><span>APP·05 · STICKER STOCK</span><span class="id">80 × 80 MM</span></div>
+      <h4>Etiqueta producto</h4>
+      <div class="mockup">
+        <div class="sticker">
+          <div class="s-top">
+            <div class="s-ref">SKU·MCH·DJI·M3E</div>
+            <svg class="s-mark" viewBox="0 0 88 88" width="28" height="28"><rect width="88" height="88" fill="#000"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#C9A961"/></svg>
+          </div>
+          <div class="s-bot">
+            <b>Mavic 3E</b>
+            DJI ENTERPRISE<br>
+            STOCK · SALTA · 02 UNIDADES<br>
+            ASESORÍA · +54 387 576 8065
+          </div>
+        </div>
+      </div>
+      <p class="acap">SOPORTE · PVC ADHESIVO MATE · IMPRESIÓN UV · LAMINADO ANTIRRAYAS</p>
+    </div>
+
+    <!-- EMAIL HEADER -->
+    <div class="app" style="grid-column:span 12">
+      <div class="atag"><span>APP·06 · EMAIL CORPORATIVO</span><span class="id">600 PX ANCHO RESPONSIVE</span></div>
+      <h4>Header de email</h4>
+      <div class="mockup" style="min-height:auto">
+        <div class="email" style="max-width:600px">
+          <div class="email-head">
+            <svg viewBox="0 0 320 120" style="width:120px;height:auto">
+              <g transform="translate(0,16)"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></g>
+              <g transform="translate(108,0)">
+                <text x="0" y="64" font-family="Archivo Black,sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text>
+                <text x="0" y="100" font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="4" fill="#F5F5F5">SOLUCIONES</text>
+              </g>
+            </svg>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;text-align:right;color:rgba(245,245,245,0.6)">
+              REF · ML·2026·142<br>
+              <span style="color:var(--gold)">SALTA · 2026·05·12</span>
+            </div>
+          </div>
+          <div class="email-subject">
+            <span><b>ASUNTO ·</b> COTIZACIÓN MAVIC 3E + RTK · OLAROZ</span>
+            <span>02 ADJUNTOS</span>
+          </div>
+          <div class="email-body">
+            <p>Ing. Pereyra,</p>
+            <p>Te adjunto la propuesta solicitada por la integración de un Mavic 3E con módulo RTK para la operación de Olaroz. Incluye 8 hs de piloto certificado en sitio y una capacitación de 16 hs para tu equipo.</p>
+            <p>Cualquier ajuste lo cerramos el jueves en la oficina de Salta, como quedamos.</p>
+          </div>
+          <div class="email-sig">
+            <div class="who">
+              <b>NICOLÁS FRANCO SRUR PISELLI</b><br>
+              DIRECTOR · MCH SOLUCIONES<br>
+              +54 387 576 8065 · NICO@MCHSOLUCIONES.COM.AR
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;text-align:right;color:rgba(0,0,0,0.5)">
+              UNIDAD · MCH<br>
+              GRUPO MARC CHAGALL SAS
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="acap">FORMATO · HTML EMAIL · COMPATIBLE OUTLOOK / GMAIL / APPLE MAIL · FALLBACK ARIAL</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     06 · ARQUITECTURA DE MARCA
+     ============================================================ -->
+<section id="s06">
+  <div class="section-tag">
+    <span class="num">06</span>
+    <span class="bar"></span>
+    <span>ARQUITECTURA DE MARCA</span>
+    <span class="bar"></span>
+    <span class="mute">PARTE 6 DE 8</span>
+  </div>
+  <h2 class="section-title">Arquitectura<br>de marca.</h2>
+  <p class="section-sub">MCH Soluciones es una de tres unidades operativas del Grupo Marc Chagall SAS. Modelo de "branded house híbrida": el Grupo es la matriz legal, pero cada unidad opera con identidad visual diferenciada en sus mercados.</p>
+
+  <!-- Architecture diagram -->
+  <div class="arch-diagram">
+    <svg class="arch-svg" viewBox="0 0 1100 520" xmlns="http://www.w3.org/2000/svg">
+      <!-- Master node -->
+      <g>
+        <rect x="400" y="40" width="300" height="100" fill="#0B0B0B" stroke="#C9A961" stroke-width="1"/>
+        <text x="550" y="74" font-family="JetBrains Mono,monospace" font-size="10" letter-spacing="3" fill="#C9A961" text-anchor="middle">MATRIZ · HOLDING</text>
+        <text x="550" y="105" font-family="Archivo Black,sans-serif" font-size="22" letter-spacing="-0.5" fill="#F5F5F5" text-anchor="middle">GRUPO MARC CHAGALL</text>
+        <text x="550" y="128" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="2" fill="#7A7A75" text-anchor="middle">SAS · FUNDADO 1985 · SALTA · AR</text>
+      </g>
+
+      <!-- Connector down -->
+      <line x1="550" y1="140" x2="550" y2="200" stroke="#C9A961" stroke-width="1"/>
+      <line x1="180" y1="200" x2="920" y2="200" stroke="#C9A961" stroke-width="1"/>
+      <line x1="180" y1="200" x2="180" y2="240" stroke="#C9A961" stroke-width="1"/>
+      <line x1="550" y1="200" x2="550" y2="240" stroke="#C9A961" stroke-width="1"/>
+      <line x1="920" y1="200" x2="920" y2="240" stroke="#C9A961" stroke-width="1"/>
+
+      <!-- Three units -->
+      <!-- Unit 1: Marc Chagall Retail -->
+      <g>
+        <rect x="50" y="240" width="260" height="160" fill="#0B0B0B" stroke="#2A2A2A" stroke-width="1"/>
+        <rect x="50" y="240" width="260" height="6" fill="#7A7A75"/>
+        <text x="180" y="275" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="2.5" fill="#7A7A75" text-anchor="middle">UNIDAD · 01 · RETAIL + ESTADO</text>
+        <text x="180" y="306" font-family="Archivo Black,sans-serif" font-size="20" letter-spacing="-0.5" fill="#F5F5F5" text-anchor="middle">MARC CHAGALL</text>
+        <text x="180" y="328" font-family="Archivo,sans-serif" font-size="10" letter-spacing="2" fill="#B9B6AE" text-anchor="middle">VENTA MINORISTA · LICITACIONES</text>
+        <line x1="80" y1="350" x2="280" y2="350" stroke="#2A2A2A"/>
+        <text x="180" y="370" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="2" fill="#7A7A75" text-anchor="middle">SEGMENTO · PROSUMER + PÚBLICO</text>
+        <text x="180" y="388" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="2" fill="#7A7A75" text-anchor="middle">CANAL · TIENDA + PLIEGOS</text>
+      </g>
+
+      <!-- Unit 2: MCH Soluciones (highlighted) -->
+      <g>
+        <rect x="420" y="240" width="260" height="160" fill="#000000" stroke="#C9A961" stroke-width="2"/>
+        <rect x="420" y="240" width="260" height="6" fill="#C9A961"/>
+        <text x="550" y="275" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="2.5" fill="#C9A961" text-anchor="middle">UNIDAD · 02 · INDUSTRIAL ◆ DOCUMENTO ACTUAL</text>
+        <!-- Mini logo -->
+        <g transform="translate(440,290)">
+          <rect width="24" height="24" fill="#C9A961"/>
+          <path d="M3 7 L7 7 L7 19 L3 19 Z M4 5 L6 5 L6 7 L4 7 Z M17 7 L21 7 L21 19 L17 19 Z M18 5 L20 5 L20 7 L18 7 Z M7 7 L8 7 L12 13 L16 7 L17 7 L17 9 L13 14 L11 14 L7 9 Z" fill="#000"/>
+        </g>
+        <text x="475" y="310" font-family="Archivo Black,sans-serif" font-size="20" letter-spacing="-0.5" fill="#F5F5F5">MCH SOLUCIONES</text>
+        <text x="550" y="335" font-family="Archivo,sans-serif" font-size="10" letter-spacing="2" fill="#F5F5F5" text-anchor="middle">TECNOLOGÍA INDUSTRIAL · NOA</text>
+        <line x1="450" y1="355" x2="650" y2="355" stroke="#C9A961" stroke-opacity="0.4"/>
+        <text x="550" y="374" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="2" fill="#C9A961" text-anchor="middle">SEGMENTO · MINERÍA + PROCESOS</text>
+        <text x="550" y="390" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="2" fill="#C9A961" text-anchor="middle">CANAL · B2B PRIVADO · DEMO EN SITIO</text>
+      </g>
+
+      <!-- Unit 3: MACH -->
+      <g>
+        <rect x="790" y="240" width="260" height="160" fill="#0B0B0B" stroke="#2A2A2A" stroke-width="1"/>
+        <rect x="790" y="240" width="260" height="6" fill="#14342B"/>
+        <text x="920" y="275" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="2.5" fill="#14342B" text-anchor="middle" style="fill:#7A7A75">UNIDAD · 03 · DIGITAL</text>
+        <text x="920" y="306" font-family="Archivo Black,sans-serif" font-size="20" letter-spacing="-0.5" fill="#F5F5F5" text-anchor="middle">MACH</text>
+        <text x="920" y="328" font-family="Archivo,sans-serif" font-size="10" letter-spacing="2" fill="#B9B6AE" text-anchor="middle">PLATAFORMA E-LEARNING · IA</text>
+        <line x1="820" y1="350" x2="1020" y2="350" stroke="#2A2A2A"/>
+        <text x="920" y="370" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="2" fill="#7A7A75" text-anchor="middle">SEGMENTO · EDUCACIÓN + B2B</text>
+        <text x="920" y="388" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="2" fill="#7A7A75" text-anchor="middle">CANAL · WEB · SAAS</text>
+      </g>
+
+      <!-- Bottom legend -->
+      <line x1="40" y1="440" x2="1060" y2="440" stroke="#2A2A2A"/>
+      <text x="40" y="465" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="2" fill="#7A7A75">FIRMA INSTITUCIONAL · "UNIDAD DE GRUPO MARC CHAGALL SAS · 1985"</text>
+      <text x="40" y="485" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="2" fill="#7A7A75">SIEMPRE APARECE EN PIE DE PÁGINA DE TODA UNIDAD · TAMAÑO MÍNIMO 8PT</text>
+      <text x="1060" y="465" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="2" fill="#C9A961" text-anchor="end">◆ DOCUMENTO ACTUAL · MCH</text>
+      <text x="1060" y="485" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="2" fill="#7A7A75" text-anchor="end">REF · ARQ·2026·V1</text>
+    </svg>
+  </div>
+
+  <!-- Co-branding -->
+  <div class="cobranding">
+    <div class="cobrand-block">
+      <h3>Co-branding con<br>marca madre.</h3>
+      <p>Cuando MCH Soluciones aparece junto a otra unidad del Grupo (por ejemplo en una página de "Nosotros" o un PDF corporativo), la regla es jerarquía igual y separación clara: dos wordmarks del mismo cuerpo, separados por una línea vertical dorada de 1px.</p>
+      <div class="cobrand-demo">
+        <svg viewBox="0 0 160 60" style="height:32px">
+          <text x="0" y="44" font-family="Archivo Black,sans-serif" font-size="40" letter-spacing="-2" fill="#F5F5F5">MCH</text>
+        </svg>
+        <div class="cobrand-sep"></div>
+        <svg viewBox="0 0 280 60" style="height:32px">
+          <text x="0" y="44" font-family="Archivo Black,sans-serif" font-size="36" letter-spacing="-2" fill="#F5F5F5">MARC CHAGALL</text>
+        </svg>
+      </div>
+    </div>
+    <div class="cobrand-block">
+      <h3>Co-branding con<br>partners.</h3>
+      <p>Cuando MCH co-firma con un partner (DJI, Hikvision, Geotab, Motorola, Hytera), la regla es subordinación visual: MCH a la izquierda en cuerpo completo; el partner a la derecha en su versión institucional, ambos sobre fondo neutro. Nunca usar colores del partner como fondo de MCH.</p>
+      <div class="cobrand-demo">
+        <svg viewBox="0 0 160 60" style="height:32px">
+          <text x="0" y="44" font-family="Archivo Black,sans-serif" font-size="40" letter-spacing="-2" fill="#F5F5F5">MCH</text>
+        </svg>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.3em;color:var(--gold)">×</div>
+        <div style="font-family:'Archivo Black',sans-serif;font-size:18px;letter-spacing:-0.02em;text-transform:uppercase;color:#F5F5F5;border:1px solid #2A2A2A;padding:8px 12px">PARTNER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Partners -->
+  <div style="margin-top:24px">
+    <div class="block-tag" style="margin-bottom:16px;display:flex;justify-content:space-between">
+      <span>PARTNERS DECLARADOS · GRUPO A</span><span class="id">2026·05</span>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-cell">
+        <div class="pname">DJI</div>
+        <div class="ptag">ENTERPRISE · DRONES</div>
+      </div>
+      <div class="partner-cell">
+        <div class="pname">HIKVISION</div>
+        <div class="ptag">CCTV · IP</div>
+      </div>
+      <div class="partner-cell">
+        <div class="pname">GEOTAB</div>
+        <div class="ptag">TELEMÁTICA · GPS</div>
+      </div>
+      <div class="partner-cell">
+        <div class="pname">MOTOROLA</div>
+        <div class="ptag">COMUNICACIÓN · RADIOS</div>
+      </div>
+      <div class="partner-cell">
+        <div class="pname">HYTERA</div>
+        <div class="ptag">COMUNICACIÓN · ALT</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     07 · NO HACER
+     ============================================================ -->
+<section id="s07">
+  <div class="section-tag">
+    <span class="num">07</span>
+    <span class="bar"></span>
+    <span>GUÍA DE NO-HACER</span>
+    <span class="bar"></span>
+    <span class="mute">PARTE 7 DE 8</span>
+  </div>
+  <h2 class="section-title">Guía de<br>no-hacer.</h2>
+  <p class="section-sub">Seis ejemplos de usos que destruyen el sistema. Cada uno marcado con tachado. Si una pieza nueva entra en alguna de estas categorías, se rehace antes de salir a producción.</p>
+
+  <div class="nope-grid">
+    <div class="nope">
+      <div class="ntag"><span>NO·01 · DEFORMAR</span><span class="id">REF·NO·001</span></div>
+      <div class="ndemo">
+        <svg class="dist-stretch" viewBox="0 0 320 120" style="width:80%;height:auto">
+          <g transform="translate(0,16)"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></g>
+          <g transform="translate(108,0)"><text x="0" y="64" font-family="Archivo Black,sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text></g>
+        </svg>
+      </div>
+      <h4>Estirar o comprimir</h4>
+      <p>El ratio del wordmark y del bloque-ícono es fijo. Estirar horizontal o verticalmente rompe la lectura tipográfica y vuelve la marca amateur.</p>
+    </div>
+
+    <div class="nope">
+      <div class="ntag"><span>NO·02 · ROTAR</span><span class="id">REF·NO·002</span></div>
+      <div class="ndemo">
+        <svg class="dist-rotate" viewBox="0 0 320 120" style="width:80%;height:auto">
+          <g transform="translate(0,16)"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></g>
+          <g transform="translate(108,0)"><text x="0" y="64" font-family="Archivo Black,sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text></g>
+        </svg>
+      </div>
+      <h4>Rotar o inclinar</h4>
+      <p>El logo siempre se presenta en horizontal. Rotaciones de 90° o ángulos arbitrarios sólo se aceptan en piezas verticales tipo lomo, y únicamente del wordmark "MCH".</p>
+    </div>
+
+    <div class="nope">
+      <div class="ntag"><span>NO·03 · GRADIENTES</span><span class="id">REF·NO·003</span></div>
+      <div class="ndemo">
+        <svg viewBox="0 0 320 120" style="width:80%;height:auto">
+          <defs><linearGradient id="bad1" x1="0" x2="1"><stop offset="0" stop-color="#FF0080"/><stop offset="1" stop-color="#7928CA"/></linearGradient></defs>
+          <g transform="translate(0,16)"><rect width="88" height="88" fill="url(#bad1)"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></g>
+          <g transform="translate(108,0)"><text x="0" y="64" font-family="Archivo Black,sans-serif" font-size="64" letter-spacing="-3" fill="url(#bad1)">MCH</text></g>
+        </svg>
+      </div>
+      <h4>Aplicar gradientes</h4>
+      <p>Cero gradientes, en ningún elemento. El logo es plano, sólido, sin metalizados ni efectos 3D. Eso lo separa del territorio "joyería" y lo ancla en "industrial moderno".</p>
+    </div>
+
+    <div class="nope">
+      <div class="ntag"><span>NO·04 · SOMBRAS</span><span class="id">REF·NO·004</span></div>
+      <div class="ndemo">
+        <svg viewBox="0 0 320 120" style="width:80%;height:auto;filter:drop-shadow(4px 4px 0 #C9A961) drop-shadow(-2px -2px 0 #F5F5F5)">
+          <g transform="translate(0,16)"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></g>
+          <g transform="translate(108,0)"><text x="0" y="64" font-family="Archivo Black,sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text></g>
+        </svg>
+      </div>
+      <h4>Sombras y outlines</h4>
+      <p>Nada de drop shadows, glow, outer-glow, contornos en color ni efectos de relieve. El logo se imprime plano. Si el fondo no da contraste, se cambia el fondo, no el logo.</p>
+    </div>
+
+    <div class="nope">
+      <div class="ntag"><span>NO·05 · FONDOS CAÓTICOS</span><span class="id">REF·NO·005</span></div>
+      <div class="ndemo dist-bg">
+        <svg viewBox="0 0 320 120" style="width:80%;height:auto">
+          <g transform="translate(0,16)"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></g>
+          <g transform="translate(108,0)"><text x="0" y="64" font-family="Archivo Black,sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text></g>
+        </svg>
+      </div>
+      <h4>Fondos con textura</h4>
+      <p>El logo respira sobre superficies planas. Texturas, fotos sin tratar, patrones decorativos o colores fuera de paleta destruyen la lectura. Si hay foto de fondo, va una capa de 50% negro encima.</p>
+    </div>
+
+    <div class="nope">
+      <div class="ntag"><span>NO·06 · ORNAMENTAR</span><span class="id">REF·NO·006</span></div>
+      <div class="ndemo">
+        <svg viewBox="0 0 320 140" style="width:80%;height:auto">
+          <g transform="translate(0,30)"><rect width="88" height="88" fill="#C9A961"/><path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#000"/></g>
+          <g transform="translate(108,14)">
+            <text x="0" y="64" font-family="Archivo Black,sans-serif" font-size="64" letter-spacing="-3" fill="#F5F5F5">MCH</text>
+            <text x="0" y="92" font-family="Times New Roman,serif" font-size="14" font-style="italic" fill="#C9A961">~ tecnología de excelencia ~</text>
+            <text x="40" y="20" font-family="Times,serif" font-size="20" fill="#C9A961">★ ★ ★</text>
+          </g>
+        </svg>
+      </div>
+      <h4>Agregar adornos</h4>
+      <p>Nada de coronas, laureles, estrellas, scripts cursivos, palabras "premium / luxury / excelencia" alrededor del logo. Si se siente la tentación de agregar algo, se quita el agregado y se baja un punto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     08 · ROADMAP
+     ============================================================ -->
+<section id="s08">
+  <div class="section-tag">
+    <span class="num">08</span>
+    <span class="bar"></span>
+    <span>ROADMAP DE IMPLEMENTACIÓN</span>
+    <span class="bar"></span>
+    <span class="mute">PARTE 8 DE 8</span>
+  </div>
+  <h2 class="section-title">Roadmap de<br>implementación.</h2>
+  <p class="section-sub">Diez piezas en orden de prioridad. Las tres primeras son innegociables para la reunión con Geotab del jueves. Las siguientes cierran el sistema mínimo para operar en julio. El resto es fase 2.</p>
+
+  <div class="roadmap">
+    <div class="road-row head">
+      <div>REF</div>
+      <div>PIEZA · ACCIÓN REQUERIDA</div>
+      <div>PRIORIDAD</div>
+      <div>FORMATO</div>
+      <div>FASE / DEADLINE</div>
+    </div>
+
+    <div class="road-row">
+      <div class="rno">01</div>
+      <div class="ritem">Logo vectorial limpio<small>Reconstruir SVG, AI, EPS, PDF + PNG ×4 tamaños (16, 32, 256, 1024 px) sobre los 4 fondos del sistema.</small></div>
+      <div class="rpr urgent">URGENTE</div>
+      <div class="rform">SVG · AI · EPS</div>
+      <div class="rphase p1">F1 · JUEVES · GEOTAB</div>
+    </div>
+
+    <div class="road-row">
+      <div class="rno">02</div>
+      <div class="ritem">Plantilla de cotización A4<small>Word + InDesign con header, tabla, footer y campos editables. Tipografía embebida. Variantes MCH / MACH.</small></div>
+      <div class="rpr urgent">URGENTE</div>
+      <div class="rform">DOCX · INDD · PDF</div>
+      <div class="rphase p1">F1 · JUEVES · GEOTAB</div>
+    </div>
+
+    <div class="road-row">
+      <div class="rno">03</div>
+      <div class="ritem">Firma de email HTML<small>Plantilla compatible Gmail/Outlook con foto, datos, mini-logo, link a website. Test en 5 clientes de mail antes de distribuir.</small></div>
+      <div class="rpr urgent">URGENTE</div>
+      <div class="rform">HTML · IMG FALLBACK</div>
+      <div class="rphase p1">F1 · JUEVES · GEOTAB</div>
+    </div>
+
+    <div class="road-row">
+      <div class="rno">04</div>
+      <div class="ritem">Tarjetas personales · Lote 1<small>Diseño final + imprenta. 4 personas × 200 unidades. Cartón mate 350g, foil dorado en el ícono. Proveedor local Salta.</small></div>
+      <div class="rpr high">ALTA</div>
+      <div class="rform">PRINT · 85×55 MM</div>
+      <div class="rphase p2">F1 · MAYO 2026</div>
+    </div>
+
+    <div class="road-row">
+      <div class="rno">05</div>
+      <div class="ritem">Avatar redes sociales<small>LinkedIn (empresa + personales), WhatsApp Business, Instagram, Google My Business. Cuadrado 1024×1024 PNG + circular.</small></div>
+      <div class="rpr high">ALTA</div>
+      <div class="rform">PNG · 1024×1024</div>
+      <div class="rphase p2">F1 · MAYO 2026</div>
+    </div>
+
+    <div class="road-row">
+      <div class="rno">06</div>
+      <div class="ritem">Landing one-pager<small>HTML estático, mismo sistema visual que este documento. Hero, 5 servicios, partners, contacto, formulario WhatsApp. Hosting en subdominio.</small></div>
+      <div class="rpr high">ALTA</div>
+      <div class="rform">HTML · CSS · JS</div>
+      <div class="rphase p2">F1 · JUNIO 2026</div>
+    </div>
+
+    <div class="road-row">
+      <div class="rno">07</div>
+      <div class="ritem">Deck comercial maestro<small>15 láminas: portada, problema, propuesta, 5 productos, caso de éxito, partners, equipo, contacto. Editable Keynote + PPT.</small></div>
+      <div class="rpr med">MEDIA</div>
+      <div class="rform">KEY · PPTX</div>
+      <div class="rphase p2">F1 · JUNIO 2026</div>
+    </div>
+
+    <div class="road-row">
+      <div class="rno">08</div>
+      <div class="ritem">Stencils + vinilos vehículo<small>Calcomanías para 2 camionetas: lateral, capó, vidrio trasero. Vinilo fundido de 5 años, instalación en Salta.</small></div>
+      <div class="rpr med">MEDIA</div>
+      <div class="rform">VINILO · OUTDOOR</div>
+      <div class="rphase p2">F2 · JULIO 2026</div>
+    </div>
+
+    <div class="road-row">
+      <div class="rno">09</div>
+      <div class="ritem">Stickers de stock + etiquetas<small>Sticker producto en góndola (80×80mm) + etiqueta de remito + etiqueta de garantía. PVC adhesivo, impresión UV.</small></div>
+      <div class="rpr low">BAJA</div>
+      <div class="rform">PVC · UV PRINT</div>
+      <div class="rphase p3">F2 · AGOSTO 2026</div>
+    </div>
+
+    <div class="road-row">
+      <div class="rno">10</div>
+      <div class="ritem">Indumentaria operativa<small>Chaleco refractario + casco + buzo polar con bordado del logo. Lote inicial 8 unidades. Proveedor textil Salta + bordado en sitio.</small></div>
+      <div class="rpr low">BAJA</div>
+      <div class="rform">TEXTIL · BORDADO</div>
+      <div class="rphase p3">F2 · AGOSTO 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     METADATA / FOOTER
+     ============================================================ -->
+<footer>
+  <div class="meta-block">
+    <div>
+      <h3>Decisiones críticas<br>a validar.</h3>
+      <ul class="meta-list">
+        <li><b>Construcción del ícono</b>Bloque dorado con M Art Deco en negativo: dos pilares ziggurat (Chrysler · 1930) unidos por chevron central. Triple lectura — M de MCH / M de Marc Chagall / terraza minera del NOA — que ancla herencia Deco del Grupo + posicionamiento industrial. Diferenciado deliberadamente del chevron horizontal de Epiroc. Validar antes de vectorizar definitivo.</li>
+        <li><b>Dorado como acento ≤ 10%</b>Decisión clave: el dorado heredado del Grupo se mantiene como firma pero pierde dominancia, evitando el efecto "tradicional/joyería" y posicionando MCH en territorio industrial moderno.</li>
+        <li><b>Tipografía Archivo Black</b>Recomendada sobre Inter ExtraBold (más industrial) y Space Grotesk (más legible en cuerpo). Validar con muestra impresa antes de adoptarla definitivamente.</li>
+        <li><b>Verde inglés como institucional</b>El uso del verde queda restringido a contextos institucionales y sustentabilidad. Validar si se quiere ampliar a más superficies o mantener proporción 15%.</li>
+        <li><b>Co-branding con partners</b>Regla de "MCH siempre primero, partner subordinado". Validar cómo se aplica en piezas donde el partner exige paridad por contrato (DJI Authorized Dealer, por ejemplo).</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Archivos derivados<br>a producir.</h3>
+      <ul class="meta-list">
+        <li><b>Paquete de logo</b>SVG (master) + AI editable + EPS + PDF + PNG ×4 tamaños sobre los 4 fondos del sistema · entregable .zip estructurado por carpetas.</li>
+        <li><b>Paleta de colores</b>Archivo .ase para Illustrator / Photoshop, .sketchpalette para Sketch, variables CSS y Tailwind config para web.</li>
+        <li><b>Plantilla de cotización</b>.docx editable con campos · .indd para diseño interno · PDF de muestra renderizado para enviar como referencia comercial.</li>
+        <li><b>Firma de email HTML</b>Plantilla HTML con tabla legacy + imágenes hospedadas en CDN propio · variantes para 4 miembros del equipo.</li>
+        <li><b>Plantilla de presentación</b>Keynote + PowerPoint con 15 layouts maestros: portada, divisor, contenido, dos columnas, tabla, cita, cierre.</li>
+        <li><b>Deck de venta producto</b>Un PDF de 4-6 páginas por cada producto del Grupo A (DJI, Hikvision, Geotab, Térmica, Motorola/Hytera) con visual de marca aplicada.</li>
+        <li><b>Hoja de estilo digital</b>Mini-website interno (esto mismo) hospedado en mch.com.ar/marca como referencia viva para el equipo y proveedores externos.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="colofon">
+    <div><b>MCH SOLUCIONES · SISTEMA DE IDENTIDAD</b> · v1.0 · 2026·05·12</div>
+    <div>UNIDAD DE <b>GRUPO MARC CHAGALL SAS</b> · SALTA · AR · DESDE 1985</div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     METADATA
+     ============================================================
+     VERSIÓN: v1.0
+     GENERADO: 2026-05-12
+     AUTOR: MCH Soluciones · Sistema de Identidad Visual
+     CLASIFICACIÓN: Interna · Para validación de junta directiva
+
+     DECISIONES CRÍTICAS PENDIENTES DE VALIDACIÓN:
+     01. Lectura del símbolo (pico/flecha/fortaleza) — definir narrativa oficial
+     02. Proporción del dorado ≤10% como regla obligatoria
+     03. Tipografía Archivo Black como display oficial (vs. Inter ExtraBold)
+     04. Restricción del verde inglés a contextos institucionales
+     05. Modelo de co-branding con partners obligados a paridad contractual
+
+     ARCHIVOS DERIVADOS A PRODUCIR:
+     - SVG/AI/EPS/PDF/PNG del logo en sus 3 jerarquías × 4 fondos
+     - Paleta .ase + .sketchpalette + variables CSS / Tailwind
+     - Plantilla .docx de cotización + .indd editable
+     - Firma de email HTML × 4 miembros del equipo
+     - Plantilla Keynote + PowerPoint (15 layouts maestros)
+     - Decks de venta producto (Grupo A: DJI, Hikvision, Geotab, Térmica, Motorola)
+     - Mini-site interno mch.com.ar/marca
+
+     PRÓXIMA REVISIÓN: 2026-06-15 (post implementación F1)
+     ============================================================ -->
+</body>
+</html>

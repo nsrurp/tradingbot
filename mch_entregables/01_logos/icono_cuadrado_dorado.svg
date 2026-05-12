@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  MCH SOLUCIONES · Ícono cuadrado
+  Variante: para fondo DORADO #C9A961
+  Versión: v1.0 · 2026-05-12
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="88" height="88" role="img" aria-label="MCH">
+  <rect width="88" height="88" fill="#000000"/>
+  <path d="M12 24 L26 24 L26 68 L12 68 Z M15 18 L23 18 L23 24 L15 24 Z M62 24 L76 24 L76 68 L62 68 Z M65 18 L73 18 L73 24 L65 24 Z M26 24 L30 24 L44 46 L58 24 L62 24 L62 32 L48 50 L40 50 L26 32 Z" fill="#C9A961"/>
+</svg>
