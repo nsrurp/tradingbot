@@ -1,0 +1,92 @@
+/* ============================================================
+   MCH SOLUCIONES · Design Tokens · CSS Custom Properties
+   v1.0 · 2026-05-12
+   Uso: importar en cualquier proyecto digital y referenciar como
+   var(--mch-black), var(--mch-gold), etc.
+   ============================================================ */
+
+:root {
+
+  /* ---------- COLORES DE MARCA ---------- */
+  --mch-black:        #000000;   /* Primario · base · 60% composición */
+  --mch-gold:         #C9A961;   /* Acento · firma · ≤10% composición */
+  --mch-gold-deep:    #A8893E;   /* Dorado profundo · hover / hipertexto en fondos claros */
+  --mch-green:        #14342B;   /* Institucional · verde inglés · 15% */
+  --mch-green-deep:   #0A1F1A;   /* Verde profundo · hover / nested cards */
+  --mch-cream:        #F5F5F5;   /* Neutro · texto sobre oscuros · 10% */
+  --mch-bone:         #EAE6DC;   /* Crema secundario · backgrounds tintados */
+
+  /* ---------- OPERATIVOS ---------- */
+  --mch-block:        #0B0B0B;   /* Bloque · jerarquía sobre negro */
+  --mch-line:         #1F1F1F;   /* Líneas · separadores sobre oscuro */
+  --mch-line-hi:      #2A2A2A;   /* Líneas · enfatizadas */
+  --mch-text-mute:    #7A7A75;   /* Texto secundario / metadata */
+  --mch-text-soft:    #B9B6AE;   /* Texto body sobre oscuro */
+
+  /* ---------- SISTEMA · SEÑALÉTICA ---------- */
+  --mch-danger:       #C8341F;   /* Rojo señal · solo errores y no-hacer · <2% */
+  --mch-success:      #7DCE94;   /* Verde sistema · solo confirmaciones / WCAG-pass */
+
+  /* ---------- TIPOGRAFÍA ---------- */
+  --mch-font-display: 'Archivo Black', 'Arial Black', 'Helvetica', sans-serif;
+  --mch-font-body:    'Archivo', 'Arial', 'Helvetica', sans-serif;
+  --mch-font-mono:    'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+
+  --mch-fs-hero:      96px;
+  --mch-fs-h1:        64px;
+  --mch-fs-h2:        42px;
+  --mch-fs-h3:        18px;
+  --mch-fs-body:      14px;
+  --mch-fs-caption:   12px;
+  --mch-fs-mono:      11px;
+
+  --mch-fw-regular:   400;
+  --mch-fw-medium:    500;
+  --mch-fw-bold:      700;
+  --mch-fw-black:     900;
+
+  --mch-tracking-tight:  -0.03em;
+  --mch-tracking-body:    0.01em;
+  --mch-tracking-mono:    0.15em;
+  --mch-tracking-mono-hi: 0.22em;
+
+  /* ---------- ESPACIO ---------- */
+  --mch-grid-unit:    8px;   /* Múltiplos: 8, 16, 24, 32, 48, 64, 96 */
+  --mch-radius:       0;     /* Sistema sin border-radius · ángulos rectos */
+
+  /* ---------- BORDES ---------- */
+  --mch-border:       1px solid var(--mch-line);
+  --mch-border-hi:    1px solid var(--mch-line-hi);
+  --mch-border-gold:  1px solid var(--mch-gold);
+
+  /* ---------- ELEVACIÓN ---------- */
+  --mch-shadow-card:  0 12px 32px rgba(0, 0, 0, 0.4);
+  --mch-shadow-hero:  0 24px 64px rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================================
+   UTILIDADES MÍNIMAS
+   ============================================================ */
+
+.mch-mono {
+  font-family: var(--mch-font-mono);
+  letter-spacing: var(--mch-tracking-mono);
+}
+
+.mch-display {
+  font-family: var(--mch-font-display);
+  letter-spacing: var(--mch-tracking-tight);
+  text-transform: uppercase;
+}
+
+.mch-tag {
+  font-family: var(--mch-font-mono);
+  font-size: var(--mch-fs-mono);
+  letter-spacing: var(--mch-tracking-mono-hi);
+  text-transform: uppercase;
+  color: var(--mch-text-mute);
+}
+.mch-tag b {
+  color: var(--mch-gold);
+  font-weight: var(--mch-fw-medium);
+}
